@@ -122,8 +122,8 @@ HIGH_MINERAL_ORE = (60, 20, 0, 210, 60, 0, 0, 0)
 #HIGH_MINERAL_ORE = (90, 10, 0, 210, 60, 0, 0, 0)
 
 # Coal seams are almost homogenous and huge
-DEEP_COAL_ORE = (90, 30, -48, 100, 95, 0, 0, 0)
-HIGH_COAL_ORE = (90, 30, 0, 210, 95, 0, 0, 0)
+DEEP_COAL_ORE = (90, 25, -48, 100, 90, 0, 0, 0)
+HIGH_COAL_ORE = (90, 25, 0, 210, 90, 0, 0, 0)
 
 
 ORE_VEINS: Dict[str, Vein] = {

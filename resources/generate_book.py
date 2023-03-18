@@ -44,7 +44,7 @@ def make_book(rm: ResourceManager, i18n: I18n, local_instance: bool = False):
     book.category('tfcgyres_orehints', 'Mineral Hints', 'Mineral veins now have hint rocks like metal veins have small nuggets!', 'tfc:metal/propick/steel', is_sorted=True, entries=(
         entry('orehints', 'Mineral Hints', 'tfc:ore/kaolinite', pages=(
             text('Finding TFC mineral veins is easier. Hint rocks now generate in the world above mineral veins just like small metal nuggets from metal ores.$(br)Look for these rocks on the surface where they don\'t belong, and there\'s likely a mineral vein beneath!'),
-            text('{:16s}'.format('Ore') + '|' + '{:>15s}'.format('Hint Rock$(br)') + ''.join([('{0:16s}|{1:>10s}').format(min, MINERAL_INDICATORS[min]).title()+'$(br)' for min in MINERAL_INDICATORS])),
+            text('$(bold){:12s}'.format('Ore') + '|' + '{:>15s}'.format('Hint Rock$(br)') +'$()'+''.join([('{0:16s}|{1:>10s}').format(min, MINERAL_INDICATORS[min]).title()+'$(br)' for min in MINERAL_INDICATORS])),
             empty_last_page()
         )),
         entry('spawnbuffs', 'Ore Spawn Buffs', 'tfc:ore/graphite', pages=(

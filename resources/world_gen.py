@@ -33,7 +33,8 @@ def generate(rm: ResourceManager):
             'random_name': vein_name,
             'biomes': vein.biomes,
             'indicator': {
-                "block": 'tfc:rock/loose/%s' % MINERAL_INDICATORS.get(vein.ore)
+                'rarity': 12,
+                'block': 'tfc:rock/loose/%s' % MINERAL_INDICATORS.get(vein.ore)
             }
         }
         if vein.type == 'pipe':

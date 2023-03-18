@@ -49,7 +49,7 @@ def main():
         elif action == 'validate':
             validate_resources()
         elif action == 'all':
-            resources(hotswap=hotswap, do_assets=True, do_data=True, do_recipes=True, do_worldgen=True, do_advancements=True)
+            resources(hotswap=hotswap, do_worldgen=True)
         elif action == 'worldgen':
             resources(hotswap=hotswap, do_worldgen=True)
         elif action == 'book':
@@ -98,7 +98,7 @@ def validate_resources():
 
 def resources(hotswap: str = None, do_assets: bool = False, do_data: bool = False, do_recipes: bool = False, do_worldgen: bool = False, do_advancements: bool = False):
     """ Generates resource files, or a subset of them """
-    resources_at(ResourceManager('tfc', resource_dir='./src/main/resources'), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
+    resources_at(ResourceManager('tfc', resource_dir='./src'), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
     if hotswap:
         resources_at(ResourceManager('tfc', resource_dir=hotswap), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
 

@@ -10,7 +10,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "Ore             | Hint Rock$(br)Bituminous_Coal |    Basalt$(br)Lignite         |    Basalt$(br)Kaolinite       |    Marble$(br)Graphite        | Claystone$(br)Cinnabar        |    Gneiss$(br)Cryolite        |     Slate$(br)Saltpeter       |   Diorite$(br)Sulfur          |     Shale$(br)Sylvite         |  Dolomite$(br)Borax           |     Chert$(br)Lapis_Lazuli    |  Andesite$(br)Gypsum          | Quartzite$(br)Halite          |  Phyllite$(br)Diamond         |     Chalk$(br)"
+      "text": "$(bold)Ore         | Hint Rock$(br)$()Bituminous_Coal |    Basalt$(br)Lignite         |    Basalt$(br)Kaolinite       |    Marble$(br)Graphite        | Claystone$(br)Cinnabar        |    Gneiss$(br)Cryolite        |     Slate$(br)Saltpeter       |   Diorite$(br)Sulfur          |     Shale$(br)Sylvite         |  Dolomite$(br)Borax           |     Chert$(br)Lapis_Lazuli    |  Andesite$(br)Gypsum          | Quartzite$(br)Halite          |  Phyllite$(br)Diamond         |     Chalk$(br)"
     }
   ],
   "read_by_default": true,
