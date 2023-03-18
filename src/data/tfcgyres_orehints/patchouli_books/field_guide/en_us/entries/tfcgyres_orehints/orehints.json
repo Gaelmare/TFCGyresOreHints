@@ -1,0 +1,18 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "name": "Mineral Hints",
+  "category": "tfcgyres_orehints:tfcgyres_orehints",
+  "icon": "tfc:ore/kaolinite",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Finding TFC mineral veins is easier. Hint rocks now generate in the world above mineral veins just like small metal nuggets from metal ores.$(br)Look for these rocks on the surface where they don't belong, and there's likely a mineral vein beneath!"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Ore             | Hint Rock$(br)Bituminous_Coal |    Basalt$(br)Lignite         |    Basalt$(br)Kaolinite       |    Marble$(br)Graphite        | Claystone$(br)Cinnabar        |    Gneiss$(br)Cryolite        |     Slate$(br)Saltpeter       |   Diorite$(br)Sulfur          |     Shale$(br)Sylvite         |  Dolomite$(br)Borax           |     Chert$(br)Lapis_Lazuli    |  Andesite$(br)Gypsum          | Quartzite$(br)Halite          |  Phyllite$(br)Diamond         |     Chalk$(br)"
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 0
+}

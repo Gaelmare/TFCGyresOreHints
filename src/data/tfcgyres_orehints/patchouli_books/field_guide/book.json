@@ -1,0 +1,10 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "extend": "tfc:field_guide",
+  "name": "orehints field_guide extension",
+  "landing_text": "orehints field_guide extension",
+  "subtitle": "${version}",
+  "dont_generate_book": false,
+  "show_progress": false,
+  "macros": {}
+}

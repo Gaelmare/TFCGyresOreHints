@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "name": "Mineral Hints",
+  "description": "Mineral veins now have hint rocks like metal veins have small nuggets!",
+  "icon": "tfc:metal/propick/steel",
+  "sortnum": 0
+}
