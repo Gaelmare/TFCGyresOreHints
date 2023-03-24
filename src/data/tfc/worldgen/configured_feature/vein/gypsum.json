@@ -76,7 +76,11 @@
     "random_name": "gypsum",
     "indicator": {
       "rarity": 12,
-      "block": "tfc:rock/loose/quartzite"
+      "blocks": [
+        {
+          "block": "tfc:rock/loose/quartzite"
+        }
+      ]
     },
     "height": 2
   }

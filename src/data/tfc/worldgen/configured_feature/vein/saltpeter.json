@@ -42,7 +42,7 @@
             "block": "tfc:ore/saltpeter/limestone"
           },
           {
-            "weight": 25,
+            "weight": 11,
             "block": "tfc:ore/gypsum/limestone"
           }
         ]
@@ -91,7 +91,11 @@
     "random_name": "saltpeter",
     "indicator": {
       "rarity": 12,
-      "block": "tfc:rock/loose/diorite"
+      "blocks": [
+        {
+          "block": "tfc:rock/loose/diorite"
+        }
+      ]
     }
   }
 }

@@ -17,9 +17,8 @@ def generate(rm: ResourceManager):
     # Tags: in_biome/
 
     # Ore Veins
-    for vein_name, vein in ORE_VEINS.items():
+    for vein_name, vein in MINERAL_VEINS.items():
         rocks = expand_rocks(vein.rocks, vein_name)
-        ore = MINERAL_ORES[vein.ore]  # standard ore
         vein_config = {
             'rarity': vein.rarity,
             'min_y': utils.vertical_anchor(vein.min_y, 'absolute'),
@@ -32,11 +31,14 @@ def generate(rm: ResourceManager):
             } for rock in rocks],
             'random_name': vein_name,
             'biomes': vein.biomes,
-            'indicator': {
-                'rarity': 12,
-                'block': 'tfc:rock/loose/%s' % MINERAL_INDICATORS.get(vein.ore)
-            }
         }
+        if MINERAL_INDICATORS.get(vein_name):  #exploiting that vein name is the same as the ore for the usual veins, and not for deep
+            vein_config['indicator'] = {
+                'rarity': 12,
+                'blocks': [{
+                    'block': 'tfc:rock/loose/%s' % MINERAL_INDICATORS.get(vein.ore)
+                }]
+            }
         if vein.type == 'pipe':
             vein_config['min_skew'] = 5
             vein_config['max_skew'] = 13
@@ -45,6 +47,22 @@ def generate(rm: ResourceManager):
         if vein.type == 'disc':
             vein_config['height'] = vein.height
         configured_placed_feature(rm, ('vein', vein_name), 'tfc:%s_vein' % vein.type, vein_config)
+
+    for vein_name, vein in DEEP_ORE_VEINS.items():
+        rocks = expand_rocks(vein.rocks, vein_name)
+        configured_placed_feature(rm, ('vein', vein_name), 'tfc:%s_vein' % vein.type, {
+            'rarity': vein.rarity,
+            'min_y': utils.vertical_anchor(vein.min_y, 'absolute'),
+            'max_y': utils.vertical_anchor(vein.max_y, 'absolute'),
+            'size': vein.size,
+            'density': vein_density(vein.density),
+            'blocks': [{
+                'replace': ['tfc:rock/raw/%s' % rock],
+                'with': vein_ore_blocks(vein, rock)
+            } for rock in rocks],  # no indicator for deep veins!
+            'random_name': vein_name,
+            'biomes': vein.biomes
+        })
 
 
 def configured_placed_feature(rm: ResourceManager, name_parts: ResourceIdentifier, feature: Optional[ResourceIdentifier] = None, config: JsonObject = None, *placements: Json):
@@ -67,6 +85,31 @@ def mineral_ore_blocks(vein: Vein, rock: str) -> List[Dict[str, Any]]:
     else:
         ore_blocks = [{'block': 'tfc:ore/%s/%s' % (vein.ore, rock)}]
     return ore_blocks
+
+def vein_ore_blocks(vein: Vein, rock: str) -> List[Dict[str, Any]]:
+    ore_blocks = [{
+        'weight': vein.poor,
+        'block': 'tfc:ore/poor_%s/%s' % (vein.ore, rock)
+    }, {
+        'weight': vein.normal,
+        'block': 'tfc:ore/normal_%s/%s' % (vein.ore, rock)
+    }, {
+        'weight': vein.rich,
+        'block': 'tfc:ore/rich_%s/%s' % (vein.ore, rock)
+    }]
+    if vein.spoiler_ore is not None and rock in vein.spoiler_rocks:
+        p = vein.spoiler_rarity * 0.01  # as a percentage of the overall vein
+        ore_blocks.append({
+            'weight': int(100 * p / (1 - p)),
+            'block': 'tfc:ore/%s/%s' % (vein.spoiler_ore, rock)
+        })
+    elif vein.deposits:
+        ore_blocks.append({
+            'weight': 10,
+            'block': 'tfc:deposit/%s/%s' % (vein.ore, rock)
+        })
+    return ore_blocks
+
 
 def vein_density(density: int) -> float:
     assert 0 <= density <= 100, 'Invalid density: %s' % str(density)

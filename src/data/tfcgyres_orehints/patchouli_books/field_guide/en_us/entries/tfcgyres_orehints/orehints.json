@@ -10,7 +10,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(bold)Ore__________Hint Rock$(br)$()Bituminous_Coal_____Basalt$(br)Lignite_____________Basalt$(br)Kaolinite___________Marble$(br)Graphite_________Claystone$(br)Cinnabar____________Gneiss$(br)Cryolite_____________Slate$(br)Saltpeter__________Diorite$(br)Sulfur_______________Shale$(br)Sylvite___________Dolomite$(br)Borax________________Chert$(br)Lapis_Lazuli______Andesite$(br)Gypsum___________Quartzite$(br)Halite____________Phyllite$(br)Diamond______________Chalk$(br)"
+      "text": "$(bold)Ore___________Hint Rock$(br)$()Bituminous_Coal_____Basalt$(br)Lignite_____________Basalt$(br)Kaolinite___________Marble$(br)Graphite_________Claystone$(br)Cinnabar____________Gneiss$(br)Cryolite_____________Slate$(br)Saltpeter__________Diorite$(br)Sulfur_______________Shale$(br)Sylvite___________Dolomite$(br)Borax________________Chert$(br)Lapis_Lazuli______Andesite$(br)Gypsum___________Quartzite$(br)Halite____________Phyllite$(br)Diamond______________Chalk$(br)"
     }
   ],
   "read_by_default": true,

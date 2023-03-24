@@ -86,7 +86,11 @@
     "random_name": "halite",
     "indicator": {
       "rarity": 12,
-      "block": "tfc:rock/loose/phyllite"
+      "blocks": [
+        {
+          "block": "tfc:rock/loose/phyllite"
+        }
+      ]
     },
     "height": 2
   }

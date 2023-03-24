@@ -2,15 +2,15 @@
   "__comment__": "This file was automatically created by mcresources",
   "type": "tfc:cluster_vein",
   "config": {
-    "rarity": 60,
+    "rarity": 100,
     "min_y": {
-      "absolute": -48
+      "absolute": -64
     },
     "max_y": {
-      "absolute": 100
+      "absolute": -16
     },
-    "size": 20,
-    "density": 0.6,
+    "size": 30,
+    "density": 0.8,
     "blocks": [
       {
         "replace": [
@@ -53,14 +53,6 @@
         ]
       }
     ],
-    "random_name": "graphite",
-    "indicator": {
-      "rarity": 12,
-      "blocks": [
-        {
-          "block": "tfc:rock/loose/claystone"
-        }
-      ]
-    }
+    "random_name": "deep_graphite"
   }
 }

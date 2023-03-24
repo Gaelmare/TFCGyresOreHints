@@ -36,7 +36,11 @@
     "random_name": "lapis_lazuli",
     "indicator": {
       "rarity": 12,
-      "block": "tfc:rock/loose/andesite"
+      "blocks": [
+        {
+          "block": "tfc:rock/loose/andesite"
+        }
+      ]
     }
   }
 }

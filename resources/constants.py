@@ -15,6 +15,10 @@ class Ore(NamedTuple):
     required_tool: str
     tag: str
 
+class OreGrade(NamedTuple):
+    weight: int
+    grind_amount: int
+
 class Vein(NamedTuple):
     ore: str
     type: str
@@ -61,7 +65,19 @@ ROCKS: Dict[str, Rock] = {
     'marble': Rock('metamorphic', 'yellow')
 }
 
-MINERAL_ORES: Dict[str, Ore] = {
+ORES: Dict[str, Ore] = {
+    'native_copper': Ore('copper', True, 'copper', 'copper'),
+    'native_gold': Ore('gold', True, 'copper', 'gold'),
+    'hematite': Ore('cast_iron', True, 'copper', 'iron'),
+    'native_silver': Ore('silver', True, 'copper', 'silver'),
+    'cassiterite': Ore('tin', True, 'copper', 'tin'),
+    'bismuthinite': Ore('bismuth', True, 'copper', 'bismuth'),
+    'garnierite': Ore('nickel', True, 'bronze', 'nickel'),
+    'malachite': Ore('copper', True, 'copper', 'copper'),
+    'magnetite': Ore('cast_iron', True, 'copper', 'iron'),
+    'limonite': Ore('cast_iron', True, 'copper', 'iron'),
+    'sphalerite': Ore('zinc', True, 'copper', 'zinc'),
+    'tetrahedrite': Ore('copper', True, 'copper', 'copper'),
     'bituminous_coal': Ore(None, False, 'copper', 'coal'),
     'lignite': Ore(None, False, 'copper', 'coal'),
     'kaolinite': Ore(None, False, 'copper', 'kaolinite'),
@@ -83,6 +99,11 @@ MINERAL_ORES: Dict[str, Ore] = {
     'ruby': Ore(None, False, 'black_steel', 'ruby'),  # Mohs: 9
     'sapphire': Ore(None, False, 'black_steel', 'sapphire'),  # Mohs: 9
     'topaz': Ore(None, False, 'steel', 'topaz')  # Mohs: 8
+}
+ORE_GRADES: Dict[str, OreGrade] = {
+    'normal': OreGrade(50, 5),
+    'poor': OreGrade(30, 3),
+    'rich': OreGrade(20, 7)
 }
 
 MINERAL_INDICATORS: Dict[str, str] = {
@@ -115,6 +136,8 @@ def preset_vein(ore: str, vein_type: str, rocks: List[str], spoiler_ore: Optiona
 
 # Default parameters for common ore veins
 # rarity, size, min_y, max_y, density, poor, normal, rich
+REALLY_DEEP_METAL_ORE = (10, 30, -64, -16, 80, 5, 20, 75)
+REALLY_DEEP_MINERAL_ORE = (100, 30, -64, -16, 80, 0, 0, 0)
 DEEP_MINERAL_ORE = (60, 20, -48, 100, 60, 0, 0, 0)
 HIGH_MINERAL_ORE = (60, 20, 0, 210, 60, 0, 0, 0)
 # TFC defaults for comparison:
@@ -125,23 +148,43 @@ HIGH_MINERAL_ORE = (60, 20, 0, 210, 60, 0, 0, 0)
 DEEP_COAL_ORE = (90, 25, -48, 100, 90, 0, 0, 0)
 HIGH_COAL_ORE = (90, 25, 0, 210, 90, 0, 0, 0)
 
+#dropped all sedimentary only veins here, since they'll never spawn in the bottom layer
+DEEP_ORE_VEINS: Dict[str, Vein] = {
+    'really_deep_copper': preset_vein('native_copper', 'cluster', ['igneous_extrusive'], preset=REALLY_DEEP_METAL_ORE),
+    'really_deep_gold': preset_vein('native_gold', 'cluster', ['igneous_extrusive', 'igneous_intrusive'], 'pyrite', 20, ['igneous_extrusive', 'igneous_intrusive'], preset=REALLY_DEEP_METAL_ORE),
+    'really_deep_silver': preset_vein('native_silver', 'cluster', ['granite', 'gneiss'], preset=REALLY_DEEP_METAL_ORE),
+    'really_deep_hematite': preset_vein('hematite', 'cluster', ['igneous_extrusive'], preset=REALLY_DEEP_METAL_ORE),
+    'really_deep_cassiterite': preset_vein('cassiterite', 'cluster', ['igneous_intrusive'], 'topaz', 10, ['granite'], preset=REALLY_DEEP_METAL_ORE),
+    'really_deep_bismuthinite': preset_vein('bismuthinite', 'cluster', ['igneous_intrusive'], preset=REALLY_DEEP_METAL_ORE),
+    'really_deep_garnierite': preset_vein('garnierite', 'cluster', ['gabbro'], preset=REALLY_DEEP_METAL_ORE),
+    'really_deep_malachite': preset_vein('malachite', 'cluster', ['marble'], preset=REALLY_DEEP_METAL_ORE),
+    'really_deep_sphalerite': preset_vein('sphalerite', 'cluster', ['metamorphic'], preset=REALLY_DEEP_METAL_ORE),
+    'really_deep_tetrahedrite': preset_vein('tetrahedrite', 'cluster', ['metamorphic'], preset=REALLY_DEEP_METAL_ORE),
+}
 
-ORE_VEINS: Dict[str, Vein] = {
+MINERAL_VEINS: Dict[str, Vein] = {
     'bituminous_coal': preset_vein('bituminous_coal', 'disc', ['sedimentary'], preset=DEEP_COAL_ORE, height=6),
     'lignite': preset_vein('lignite', 'disc', ['sedimentary'], preset=HIGH_COAL_ORE, height=6),
     'kaolinite': preset_vein('kaolinite', 'cluster', ['sedimentary'], preset=HIGH_MINERAL_ORE),
     'graphite': preset_vein('graphite', 'cluster', ['gneiss', 'marble', 'quartzite', 'schist'], preset=DEEP_MINERAL_ORE),
+    'deep_graphite': preset_vein('graphite', 'cluster', ['gneiss', 'marble', 'quartzite', 'schist'], preset=REALLY_DEEP_MINERAL_ORE),
     'cinnabar': preset_vein('cinnabar', 'cluster', ['igneous_extrusive', 'quartzite', 'shale'], 'opal', 10, ['quartzite'], preset=DEEP_MINERAL_ORE),
+    'deep_cinnabar': preset_vein('cinnabar', 'cluster', ['igneous_extrusive', 'quartzite', 'shale'], 'opal', 10, ['quartzite'], preset=REALLY_DEEP_MINERAL_ORE),
     'cryolite': preset_vein('cryolite', 'cluster', ['granite'], preset=DEEP_MINERAL_ORE),
-    'saltpeter': preset_vein('saltpeter', 'cluster', ['sedimentary'], 'gypsum', 20, ['limestone'], preset=DEEP_MINERAL_ORE),
+    'deep_cryolite': preset_vein('cryolite', 'cluster', ['granite'], preset=REALLY_DEEP_MINERAL_ORE),
+    'saltpeter': preset_vein('saltpeter', 'cluster', ['sedimentary'], 'gypsum', 10, ['limestone'], preset=DEEP_MINERAL_ORE),
     'sulfur': preset_vein('sulfur', 'cluster', ['igneous_extrusive'], 'gypsum', 20, ['rhyolite'], preset=HIGH_MINERAL_ORE),
+    'deep_sulfur': preset_vein('sulfur', 'cluster', ['igneous_extrusive'], 'gypsum', 10, ['rhyolite'], preset=REALLY_DEEP_MINERAL_ORE),
     'sylvite': preset_vein('sylvite', 'cluster', ['shale', 'claystone', 'chert'], preset=HIGH_MINERAL_ORE),
     'borax': preset_vein('borax', 'cluster', ['claystone', 'limestone', 'shale'], preset=HIGH_MINERAL_ORE),
     'gypsum': vein('gypsum', 'disc', 120, 20, 30, 90, 60, 0, 0, 0, ['metamorphic']),
     'lapis_lazuli': preset_vein('lapis_lazuli', 'cluster', ['limestone', 'marble'], preset=DEEP_MINERAL_ORE),
+    'deep_lapis_lazuli': preset_vein('lapis_lazuli', 'cluster', ['marble'], preset=REALLY_DEEP_MINERAL_ORE),
     'halite': vein('halite', 'disc', 120, 30, 30, 90, 80, 0, 0, 0, ['sedimentary']),
     'diamond': vein('diamond', 'pipe', 60, 60, -64, 100, 40, 0, 0, 0, ['gabbro'], 'graphite', 10, ['gabbro']),
-    'volcanic_sulfur': vein('sulfur', 'disc', 25, 14, 80, 180, 40, 0, 0, 0, ['igneous_extrusive', 'igneous_intrusive'], biomes='#tfc:is_volcanic', height=6)
+    'deep_diamond': vein('diamond', 'pipe', 60, 60, -64, -16, 60, 0, 0, 0, ['gabbro'], 'graphite', 10, ['gabbro']),
+    'volcanic_sulfur': vein('sulfur', 'disc', 25, 14, 80, 180, 40, 0, 0, 0, ['igneous_extrusive', 'igneous_intrusive'], biomes='#tfc:is_volcanic', height=6),
+    'deep_emerald': vein('emerald', 'pipe', 80, 60, -64, -16, 60, 0, 0, 0, ['igneous_intrusive']),
 }
 
 # This is here because it's used all over, and it's easier to import with all constants

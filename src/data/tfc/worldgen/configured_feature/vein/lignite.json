@@ -86,7 +86,11 @@
     "random_name": "lignite",
     "indicator": {
       "rarity": 12,
-      "block": "tfc:rock/loose/basalt"
+      "blocks": [
+        {
+          "block": "tfc:rock/loose/basalt"
+        }
+      ]
     },
     "height": 6
   }

@@ -1,7 +1,7 @@
 {
   "__comment__": "This file was automatically created by mcresources",
-  "name": "Mineral Hints",
-  "description": "Mineral veins now have hint rocks like metal veins have small nuggets!",
+  "name": "Ore Hints and Spawning",
+  "description": "Mineral veins now have hint rocks like metal veins have small nuggets! Ore veins are better, especially at the bottom of the world.",
   "icon": "tfc:metal/propick/steel",
   "sortnum": 0
 }

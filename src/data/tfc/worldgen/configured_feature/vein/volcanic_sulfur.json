@@ -85,10 +85,6 @@
     ],
     "random_name": "volcanic_sulfur",
     "biomes": "#tfc:is_volcanic",
-    "indicator": {
-      "rarity": 12,
-      "block": "tfc:rock/loose/shale"
-    },
     "height": 6
   }
 }
