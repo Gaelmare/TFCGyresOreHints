@@ -110,6 +110,7 @@ def resources_at(rm: ResourceManager, do_assets: bool, do_data: bool, do_recipes
     # generic assets / data
     if do_worldgen:
         world_gen.generate(rm)
+    rm.flush()
 
     print('New = %d, Modified = %d, Unchanged = %d, Errors = %d' % (rm.new_files, rm.modified_files, rm.unchanged_files, rm.error_files))
 

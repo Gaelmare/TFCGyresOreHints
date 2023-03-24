@@ -1,6 +1,6 @@
 #!/bin/bash
 project=TFCGyres-OreHints
-version=1.2
+version=1.3
 
 file=${project}-${version}.jar
 rm -f ${file}

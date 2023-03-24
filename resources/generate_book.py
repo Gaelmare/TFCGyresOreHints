@@ -38,7 +38,7 @@ def main():
     print('Done')
 
 def make_book(rm: ResourceManager, i18n: I18n, local_instance: bool = False):
-    rm.domain = 'tfcgyres_orehints'  # DOMAIN CHANGE
+    rm.domain = 'tfcgyres'  # DOMAIN CHANGE
     book = Book(rm, 'field_guide', {}, i18n, local_instance, reverse_translate=False)
 
     book.category('tfcgyres_orehints', 'Ore Hints and Spawning', 'Mineral veins now have hint rocks like metal veins have small nuggets! Ore veins are better, especially at the bottom of the world.', 'tfc:metal/propick/steel', is_sorted=True, entries=(
@@ -48,8 +48,8 @@ def make_book(rm: ResourceManager, i18n: I18n, local_instance: bool = False):
             empty_last_page()
         )),
         entry('spawnbuffs', 'Ore Spawn Buffs', 'tfc:ore/graphite', pages=(
-            text('Adding hint rocks required restating the TFC spawn data for mineral veins. Some of the veins were too small and too rare, so sizes, spawn chances, and some shapes changed!$(br)Coal veins are now much larger horizontal discs with fewer inclusions. Most other mineral veins are more common and doubled in size. Y-level restrictions are the same.'),
-            text('Exploring the bottom of the world may be profitable! Deep veins (below y=-16) were added for all non-sedimentary ores: metal, mineral, and non-river gem. These veins may be also larger, denser, and purer.'),
+            text('Adding hint rocks included the TFC spawn data for mineral veins, so why not make them better? Some of the veins were too small and too rare, so sizes, spawn chances, and some shapes changed!$(br)Coal veins are now much larger horizontal discs with fewer inclusions. Most other mineral veins are more common and doubled in size. Y-level restrictions are the same.'),
+            text('Exploring the bottom of the world may be profitable! Deep veins (below y=0) were added for all non-sedimentary ores: metal, mineral, and non-river gem. These veins may be larger, denser, and purer.'),
             empty_last_page()
         )),
     ))

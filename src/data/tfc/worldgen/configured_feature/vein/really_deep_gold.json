@@ -2,92 +2,16 @@
   "__comment__": "This file was automatically created by mcresources",
   "type": "tfc:cluster_vein",
   "config": {
-    "rarity": 10,
+    "rarity": 100,
     "min_y": {
       "absolute": -64
     },
     "max_y": {
-      "absolute": -16
+      "absolute": 0
     },
     "size": 30,
     "density": 0.8,
     "blocks": [
-      {
-        "replace": [
-          "tfc:rock/raw/rhyolite"
-        ],
-        "with": [
-          {
-            "weight": 5,
-            "block": "tfc:ore/poor_native_gold/rhyolite"
-          },
-          {
-            "weight": 20,
-            "block": "tfc:ore/normal_native_gold/rhyolite"
-          },
-          {
-            "weight": 75,
-            "block": "tfc:ore/rich_native_gold/rhyolite"
-          }
-        ]
-      },
-      {
-        "replace": [
-          "tfc:rock/raw/basalt"
-        ],
-        "with": [
-          {
-            "weight": 5,
-            "block": "tfc:ore/poor_native_gold/basalt"
-          },
-          {
-            "weight": 20,
-            "block": "tfc:ore/normal_native_gold/basalt"
-          },
-          {
-            "weight": 75,
-            "block": "tfc:ore/rich_native_gold/basalt"
-          }
-        ]
-      },
-      {
-        "replace": [
-          "tfc:rock/raw/andesite"
-        ],
-        "with": [
-          {
-            "weight": 5,
-            "block": "tfc:ore/poor_native_gold/andesite"
-          },
-          {
-            "weight": 20,
-            "block": "tfc:ore/normal_native_gold/andesite"
-          },
-          {
-            "weight": 75,
-            "block": "tfc:ore/rich_native_gold/andesite"
-          }
-        ]
-      },
-      {
-        "replace": [
-          "tfc:rock/raw/dacite"
-        ],
-        "with": [
-          {
-            "weight": 5,
-            "block": "tfc:ore/poor_native_gold/dacite"
-          },
-          {
-            "weight": 20,
-            "block": "tfc:ore/normal_native_gold/dacite"
-          },
-          {
-            "weight": 75,
-            "block": "tfc:ore/rich_native_gold/dacite"
-          }
-        ]
-      },
       {
         "replace": [
           "tfc:rock/raw/granite"

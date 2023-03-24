@@ -2,12 +2,12 @@
   "__comment__": "This file was automatically created by mcresources",
   "type": "tfc:cluster_vein",
   "config": {
-    "rarity": 10,
+    "rarity": 100,
     "min_y": {
       "absolute": -64
     },
     "max_y": {
-      "absolute": -16
+      "absolute": 0
     },
     "size": 30,
     "density": 0.8,
