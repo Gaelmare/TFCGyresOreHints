@@ -13,6 +13,7 @@ NON_TEXT_FIRST_PAGE = 'NON_TEXT_FIRST_PAGE'
 PAGE_BREAK = 'PAGE_BREAK'
 EMPTY_LAST_PAGE = 'EMPTY_LAST_PAGE'
 
+NUM_TFC_CATEGORIES = 3
 
 class Component(NamedTuple):
     type: str
@@ -93,7 +94,7 @@ class Book:
     def __init__(self, rm: ResourceManager, root_name: str, macros: JsonObject, i18n: I18n, local_instance: bool, reverse_translate: bool):
         self.rm: ResourceManager = rm
         self.root_name = root_name
-        self.category_count = 0
+        self.category_count = NUM_TFC_CATEGORIES
         self.i18n = i18n
         self.local_instance = local_instance
         self.reverse_translate = reverse_translate

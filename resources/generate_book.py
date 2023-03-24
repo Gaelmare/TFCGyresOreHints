@@ -38,20 +38,16 @@ def main():
     print('Done')
 
 def make_book(rm: ResourceManager, i18n: I18n, local_instance: bool = False):
-    rm.domain = 'tfcgyres'  # DOMAIN CHANGE
+    rm.domain = 'tfcgyres_orehints'  # DOMAIN CHANGE
     book = Book(rm, 'field_guide', {}, i18n, local_instance, reverse_translate=False)
 
-    book.category('tfcgyres_orehints', 'Ore Hints and Spawning', 'Mineral veins now have hint rocks like metal veins have small nuggets! Ore veins are better, especially at the bottom of the world.', 'tfc:metal/propick/steel', is_sorted=True, entries=(
+    book.category('tfcgyres_orehints', 'Ore Hints and Spawning', 'Mineral veins now have hint rocks like metal veins have small nuggets! Ore veins are better, especially at the bottom of the world.$(br2)Thanks to AnodeCathode of TechNodeFirmaCraft for the "hint rock" idea and initial rock selections.', 'tfc:metal/propick/steel', is_sorted=True, entries=(
         entry('orehints', 'Mineral Hints', 'tfc:ore/kaolinite', pages=(
             text('Finding TFC mineral veins is easier. Hint rocks now generate in the world above mineral veins just like small metal nuggets from metal ores.$(br)Look for these rocks on the surface where they don\'t belong, and there\'s likely a mineral vein beneath!'),
-            text('$(bold){:_<12s}'.format('Ore') + '{:_>16s}'.format('Hint Rock$(br)') +'$()'+''.join([('{0:_<16s}{1:_>10s}').format(min, MINERAL_INDICATORS[min]).title()+'$(br)' for min in MINERAL_INDICATORS])),
-            empty_last_page()
-        )),
-        entry('spawnbuffs', 'Ore Spawn Buffs', 'tfc:ore/graphite', pages=(
-            text('Adding hint rocks included the TFC spawn data for mineral veins, so why not make them better? Some of the veins were too small and too rare, so sizes, spawn chances, and some shapes changed!$(br)Coal veins are now much larger horizontal discs with fewer inclusions. Most other mineral veins are more common and doubled in size. Y-level restrictions are the same.'),
-            text('Exploring the bottom of the world may be profitable! Deep veins (below y=0) were added for all non-sedimentary ores: metal, mineral, and non-river gem. These veins may be larger, denser, and purer.'),
-            empty_last_page()
-        )),
+            text('$(bold){:_<12s}'.format('Ore') + '{:_>16s}'.format('Hint Rock$(br)') +'$()'+''.join([('{0:_<16s}{1:_>10s}').format(min, MINERAL_INDICATORS[min]).title()+'$(br)' for min in MINERAL_INDICATORS])))),
+        entry('spawnbuffs', 'Better Ore Veins', 'tfc:ore/graphite', pages=(
+            text('Making hint rocks also includes the mineral veins themselves, so why not make them better? Some of the veins were too small and too rare, so sizes, rarities, and some shapes changed!$(br2)Coal veins are now much larger horizontal discs with fewer inclusions. Most other mineral veins are more common and doubled in radius. Y-level restrictions are the same.'),
+            text('$(bold)Deep Ore Veins$()$(br2)Exploring the depths of the world may be more rewarding! More veins below y-level 0 now exist for all metamorphic and igneous intrusive ores: metal, mineral, and diamonds/emeralds. These veins may be larger, denser, and purer.$(br2)There are no iron ores that spawn deep as sedimentary and igneous extrusive rocks do not spawn on the bottom layer.'))),
     ))
 
     book.build()
