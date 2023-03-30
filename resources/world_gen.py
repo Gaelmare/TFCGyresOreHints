@@ -16,8 +16,11 @@ def generate(rm: ResourceManager):
 
     # Tags: in_biome/
     placed_feature_118_hack(rm, 'in_biome/veins', *[
+        *('tfc:vein/%s' % v for v in MINERAL_VEINS.keys()),
         *('tfc:vein/%s' % v for v in DEEP_MINERAL_VEINS.keys()),
+        *('tfc:vein/%s' % v for v in HIGH_ORE_VEINS.keys()),
         *('tfc:vein/%s' % v for v in DEEP_ORE_VEINS.keys()),
+        *('tfc:vein/%s' % v for v in SURPRISE_VEINS.keys()),
     ])
 
     # Ore Veins
@@ -75,6 +78,28 @@ def generate(rm: ResourceManager):
             vein_config['height'] = vein.height
         configured_placed_feature(rm, ('vein', vein_name), 'tfc:%s_vein' % vein.type, vein_config)
 
+    for vein_name, vein in HIGH_ORE_VEINS.items():
+        rocks = expand_rocks(vein.rocks, vein_name)
+        configured_placed_feature(rm, ('vein', vein_name), 'tfc:%s_vein' % vein.type, {
+            'rarity': vein.rarity,
+            'min_y': utils.vertical_anchor(vein.min_y, 'absolute'),
+            'max_y': utils.vertical_anchor(vein.max_y, 'absolute'),
+            'size': vein.size,
+            'density': vein_density(vein.density),
+            'blocks': [{
+                'replace': ['tfc:rock/raw/%s' % rock],
+                'with': vein_ore_blocks(vein, rock)
+            } for rock in rocks],  # no indicator for deep veins!
+            'random_name': vein_name,
+            'biomes': vein.biomes,
+            'indicator': {
+                'rarity': 12,
+                'blocks': [{
+                    'block': 'tfc:ore/small_%s' % vein.ore
+                }]
+            }
+        })
+
     for vein_name, vein in DEEP_ORE_VEINS.items():
         rocks = expand_rocks(vein.rocks, vein_name)
         configured_placed_feature(rm, ('vein', vein_name), 'tfc:%s_vein' % vein.type, {
@@ -91,6 +116,22 @@ def generate(rm: ResourceManager):
             'biomes': vein.biomes
         })
 
+    for vein_name, vein in SURPRISE_VEINS.items():
+        rocks = expand_rocks(vein.rocks, vein_name)
+        configured_placed_feature(rm, ('vein', vein_name), 'tfc:%s_vein' % vein.type, {
+            'rarity': vein.rarity,
+            'min_y': utils.vertical_anchor(vein.min_y, 'absolute'),
+            'max_y': utils.vertical_anchor(vein.max_y, 'absolute'),
+            'size': vein.size,
+            'density': vein_density(vein.density),
+            'blocks': [{
+                'replace': ['tfc:rock/raw/%s' % rock],
+                'with': [{'weight': 90, 'block': 'tfc:ore/%s/%s' % (vein.ore, rock)},
+                         {'weight': 10, 'block': 'minecraft:lava'}] #surprise! How difficult would infested TFC stone be?
+            } for rock in rocks], #nod to CustomOreGen gem pipes
+            'random_name': vein_name,
+            'biomes': vein.biomes
+        })
 
 
 # Vein Helper Functions

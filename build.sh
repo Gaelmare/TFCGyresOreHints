@@ -1,6 +1,6 @@
 #!/bin/bash
 project=TFCGyres-OreHints
-version=1.3
+version=1.4
 
 file=${project}-${version}.jar
 rm -f ${file}
@@ -10,6 +10,7 @@ rm -f ${file}
 #../TerraFirmaCraft/venv/bin/python3.10 ./resources/__main__.py book
 
 cd src
+rm -r assets
 jar --create --file ../${file} *
 
 cd ..

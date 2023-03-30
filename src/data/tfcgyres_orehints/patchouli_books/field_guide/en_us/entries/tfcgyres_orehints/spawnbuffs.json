@@ -1,6 +1,6 @@
 {
   "__comment__": "This file was automatically created by mcresources",
-  "name": "Better Ore Veins",
+  "name": "Ore Vein Tweaks",
   "category": "tfcgyres_orehints:tfcgyres_orehints",
   "icon": "tfc:ore/graphite",
   "pages": [
@@ -10,7 +10,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(bold)Deep Ore Veins$()$(br2)Exploring the depths of the world may be more rewarding! More veins below y-level 0 now exist for all metamorphic and igneous intrusive ores: metal, mineral, and diamonds/emeralds. These veins may be larger, denser, and purer.$(br2)There are no iron ores that spawn deep as sedimentary and igneous extrusive rocks do not spawn on the bottom layer."
+      "text": "$(bold)Ore Veins on the Brink$()$(br2)Exploring the depths and heights of the world may be more rewarding! More veins below y-level 0 now exist for all metamorphic and igneous intrusive ores: metal, mineral, and diamonds/emeralds. These veins may be larger, denser, and purer.$(br2)In the mountains, there are small, dense iron, copper and sulfur veins."
     }
   ],
   "read_by_default": true,

@@ -136,17 +136,31 @@ def preset_vein(ore: str, vein_type: str, rocks: List[str], spoiler_ore: Optiona
 
 # Default parameters for common ore veins
 # rarity, size, min_y, max_y, density, poor, normal, rich
-REALLY_DEEP_METAL_ORE = (100, 30, -64, 0, 80, 5, 20, 75)
-REALLY_DEEP_MINERAL_ORE = (100, 30, -64, 0, 80, 0, 0, 0)
+REALLY_DEEP_METAL_ORE = (100, 30, -94, -16, 80, 5, 20, 75)
+HIGH_METAL_ORE = (15, 15, 120, 210, 80, 10, 30, 60)
+# TFC defaults for comparison:
+# POOR_METAL_ORE = (80, 15, 0, 100, 40, 40, 30, 10)
+# NORMAL_METAL_ORE = (60, 20, -32, 75, 60, 20, 50, 30)
+# DEEP_METAL_ORE = (100, 30, -64, 30, 70, 10, 30, 60)
+
+REALLY_DEEP_MINERAL_ORE = (100, 30, -80, -16, 80, 0, 0, 0)
 DEEP_MINERAL_ORE = (60, 20, -48, 100, 60, 0, 0, 0)
 HIGH_MINERAL_ORE = (60, 20, 0, 210, 60, 0, 0, 0)
+REALLY_HIGH_MINERAL_ORE = (15, 15, 120, 210, 80, 0, 0, 0)
 # TFC defaults for comparison:
-#DEEP_MINERAL_ORE = (90, 10, -48, 100, 60, 0, 0, 0)
-#HIGH_MINERAL_ORE = (90, 10, 0, 210, 60, 0, 0, 0)
+# DEEP_MINERAL_ORE = (90, 10, -48, 100, 60, 0, 0, 0)
+# HIGH_MINERAL_ORE = (90, 10, 0, 210, 60, 0, 0, 0)
 
-# Coal seams are almost homogenous and huge
+# Coal seams are almost homogenous and huge, but still rarer
 DEEP_COAL_ORE = (90, 25, -48, 100, 90, 0, 0, 0)
 HIGH_COAL_ORE = (90, 25, 0, 210, 90, 0, 0, 0)
+
+HIGH_ORE_VEINS: Dict[str, Vein] = {
+    'high_hematite': preset_vein('hematite', 'cluster', ['igneous_extrusive'], preset=HIGH_METAL_ORE),
+    'high_native_copper': preset_vein('native_copper', 'cluster', ['igneous_extrusive'], preset=HIGH_METAL_ORE),
+    'high_magnetite': preset_vein('magnetite', 'cluster', ['sedimentary'], preset=HIGH_METAL_ORE),
+    'high_limonite': preset_vein('limonite', 'cluster', ['sedimentary'], 'ruby', 20, ['limestone', 'shale'], preset=HIGH_METAL_ORE),
+}
 
 #dropped all sedimentary only veins here, since they'll never spawn in the bottom layer
 DEEP_ORE_VEINS: Dict[str, Vein] = {
@@ -160,7 +174,9 @@ DEEP_ORE_VEINS: Dict[str, Vein] = {
     'really_deep_tetrahedrite': preset_vein('tetrahedrite', 'cluster', ['metamorphic'], preset=REALLY_DEEP_METAL_ORE),
 }
 
+#spawn rates tweaked or not, these are here for indicator rock settings
 MINERAL_VEINS: Dict[str, Vein] = {
+    'high_sulfur': preset_vein('sulfur', 'cluster', ['igneous_extrusive'], 'gypsum', 20, ['rhyolite'], preset=REALLY_HIGH_MINERAL_ORE),
     'bituminous_coal': preset_vein('bituminous_coal', 'disc', ['sedimentary'], preset=DEEP_COAL_ORE, height=6),
     'lignite': preset_vein('lignite', 'disc', ['sedimentary'], preset=HIGH_COAL_ORE, height=6),
     'kaolinite': preset_vein('kaolinite', 'cluster', ['sedimentary'], preset=HIGH_MINERAL_ORE),
@@ -175,7 +191,7 @@ MINERAL_VEINS: Dict[str, Vein] = {
     'lapis_lazuli': preset_vein('lapis_lazuli', 'cluster', ['limestone', 'marble'], preset=DEEP_MINERAL_ORE),
     'halite': vein('halite', 'disc', 120, 30, 30, 90, 80, 0, 0, 0, ['sedimentary']),
     'diamond': vein('diamond', 'pipe', 60, 60, -64, 100, 40, 0, 0, 0, ['gabbro'], 'graphite', 10, ['gabbro']),
-    'volcanic_sulfur': vein('sulfur', 'disc', 25, 14, 80, 180, 40, 0, 0, 0, ['igneous_extrusive', 'igneous_intrusive'], biomes='#tfc:is_volcanic', height=6),
+    'volcanic_sulfur': vein('sulfur', 'disc', 10, 15, 80, 180, 80, 0, 0, 0, ['igneous_extrusive', 'igneous_intrusive'], biomes='#tfc:is_volcanic', height=6),
 }
 
 DEEP_MINERAL_VEINS = {
@@ -186,6 +202,12 @@ DEEP_MINERAL_VEINS = {
     'deep_diamond': vein('diamond', 'pipe', 60, 60, -64, 0, 60, 0, 0, 0, ['gabbro'], 'graphite', 10, ['gabbro']),
     'deep_emerald': vein('emerald', 'pipe', 80, 60, -64, 0, 60, 0, 0, 0, ['igneous_intrusive']),
 }
+
+SURPRISE_VEINS = {
+    'surprise_diamond': vein('diamond', 'pipe', 240, 60, -64, 100, 60, 0, 0, 0, ['gabbro']),
+    'surprise_emerald': vein('emerald', 'pipe', 240, 60, -64, 100, 60, 0, 0, 0, ['igneous_intrusive']),
+}
+
 
 # This is here because it's used all over, and it's easier to import with all constants
 def lang(key: str, *args) -> str:

@@ -1,13 +1,13 @@
 {
   "__comment__": "This file was automatically created by mcresources",
-  "type": "tfc:disc_vein",
+  "type": "tfc:cluster_vein",
   "config": {
-    "rarity": 10,
+    "rarity": 15,
     "min_y": {
-      "absolute": 80
+      "absolute": 120
     },
     "max_y": {
-      "absolute": 180
+      "absolute": 210
     },
     "size": 15,
     "density": 0.8,
@@ -18,7 +18,12 @@
         ],
         "with": [
           {
+            "weight": 100,
             "block": "tfc:ore/sulfur/rhyolite"
+          },
+          {
+            "weight": 25,
+            "block": "tfc:ore/gypsum/rhyolite"
           }
         ]
       },
@@ -51,40 +56,9 @@
             "block": "tfc:ore/sulfur/dacite"
           }
         ]
-      },
-      {
-        "replace": [
-          "tfc:rock/raw/granite"
-        ],
-        "with": [
-          {
-            "block": "tfc:ore/sulfur/granite"
-          }
-        ]
-      },
-      {
-        "replace": [
-          "tfc:rock/raw/diorite"
-        ],
-        "with": [
-          {
-            "block": "tfc:ore/sulfur/diorite"
-          }
-        ]
-      },
-      {
-        "replace": [
-          "tfc:rock/raw/gabbro"
-        ],
-        "with": [
-          {
-            "block": "tfc:ore/sulfur/gabbro"
-          }
-        ]
       }
     ],
-    "random_name": "volcanic_sulfur",
-    "biomes": "#tfc:is_volcanic",
+    "random_name": "high_sulfur",
     "indicator": {
       "rarity": 12,
       "blocks": [
@@ -92,7 +66,6 @@
           "block": "tfc:rock/loose/shale"
         }
       ]
-    },
-    "height": 6
+    }
   }
 }
