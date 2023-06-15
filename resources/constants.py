@@ -3,8 +3,6 @@
 
 from typing import Dict, List, Set, NamedTuple, Sequence, Optional, Literal, Tuple, Any
 
-
-
 class Rock(NamedTuple):
     category: str
     sand: str
@@ -144,8 +142,8 @@ HIGH_METAL_ORE = (15, 15, 120, 210, 80, 10, 30, 60)
 # DEEP_METAL_ORE = (100, 30, -64, 30, 70, 10, 30, 60)
 
 REALLY_DEEP_MINERAL_ORE = (100, 30, -80, -16, 80, 0, 0, 0)
-DEEP_MINERAL_ORE = (60, 20, -48, 100, 60, 0, 0, 0)
-HIGH_MINERAL_ORE = (60, 20, 0, 210, 60, 0, 0, 0)
+DEEP_MINERAL_ORE = (60, 15, -48, 100, 60, 0, 0, 0)
+HIGH_MINERAL_ORE = (60, 15, 0, 210, 60, 0, 0, 0)
 REALLY_HIGH_MINERAL_ORE = (15, 15, 120, 210, 80, 0, 0, 0)
 # TFC defaults for comparison:
 # DEEP_MINERAL_ORE = (90, 10, -48, 100, 60, 0, 0, 0)
