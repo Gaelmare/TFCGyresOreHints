@@ -8,7 +8,7 @@ from mcresources.type_definitions import ResourceIdentifier, JsonObject, Json, V
 from constants import *
 
 
-def generate(rm: ResourceManager):
+def generate(rm: ResourceManager, HINT_GEN=True):
     # Biome Feature Tags
     # Biomes -> in_biome/<step>/<optional biome>
     # in_biome/ -> other tags in the form feature/<name>s
@@ -38,13 +38,15 @@ def generate(rm: ResourceManager):
             } for rock in rocks],
             'random_name': vein_name,
             'biomes': vein.biomes,
-            'indicator': {
+        }
+        if HINT_GEN:
+            vein_config['indicator'] = {
                 'rarity': 12,
                 'blocks': [{
                     'block': 'tfc:rock/loose/%s' % MINERAL_INDICATORS.get(vein.ore)
                 }]
             }
-        }
+
         if vein.type == 'pipe':
             vein_config['min_skew'] = 5
             vein_config['max_skew'] = 13

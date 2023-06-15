@@ -57,7 +57,8 @@ def main():
 
 def clean(local: Optional[str]):
     """ Cleans all generated resources files """
-    clean_at('./src/main/resources')
+    clean_at('./src')
+    clean_at('./src_nohints')
     if local:
         clean_at(local)
 
@@ -74,7 +75,7 @@ def clean_at(location: str):
 
 def validate_resources():
     """ Validates all resources are unchanged. """
-    rm = ValidatingResourceManager('tfc', './src/main/resources')
+    rm = ValidatingResourceManager('tfc', './src')
     resources_at(rm, True, True, True, True, True)
     error = rm.error_files != 0
 
@@ -101,15 +102,16 @@ def resources(hotswap: str = None, do_assets: bool = False, do_data: bool = Fals
     resources_at(ResourceManager('tfc', resource_dir='./src'), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
     if hotswap:
         resources_at(ResourceManager('tfc', resource_dir=hotswap), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
+    resources_at(ResourceManager('tfc', resource_dir='./src_nohints'), do_assets, do_data, do_recipes, do_worldgen, do_advancements, do_hints = False)
 
 
-def resources_at(rm: ResourceManager, do_assets: bool, do_data: bool, do_recipes: bool, do_worldgen: bool, do_advancements: bool):
+def resources_at(rm: ResourceManager, do_assets: bool, do_data: bool, do_recipes: bool, do_worldgen: bool, do_advancements: bool, do_hints = True):
     # do simple lang keys first, because it's ordered intentionally
     rm.lang(constants.DEFAULT_LANG)
 
     # generic assets / data
     if do_worldgen:
-        world_gen.generate(rm)
+        world_gen.generate(rm, do_hints)
     rm.flush()
 
     print('New = %d, Modified = %d, Unchanged = %d, Errors = %d' % (rm.new_files, rm.modified_files, rm.unchanged_files, rm.error_files))

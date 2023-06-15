@@ -258,7 +258,7 @@ class Book:
 
     def prefix(self, path: str) -> str:
         """ In a local instance, domains are all under patchouli, otherwise under tfc """
-        return ('patchouli' if self.local_instance else 'tfcgyres_orehints') + ':' + path
+        return ('patchouli' if self.local_instance else path) + ':' + path
 
     def load_data(self, name_parts: ResourceIdentifier) -> JsonObject:
         res = utils.resource_location(self.rm.domain, name_parts)

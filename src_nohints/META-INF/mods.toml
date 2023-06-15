@@ -15,13 +15,13 @@ license = "EUPL-1.2" #for TFC compatibility
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
-modId = "tfcgyres_orehints" #mandatory
+modId = "tfcgyres_nohints" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
 # ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
 # see the associated build.gradle script for how to populate this completely automatically during a build
 version = "1.5" #mandatory
 # A display name for the mod
-displayName = "TFCGyres-OreHints" #mandatory
+displayName = "TFCGyres-NoHints" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
 #updateJSONURL="http://myurl.me/" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
@@ -34,17 +34,17 @@ credits="Thanks to the TFC Crew, especially EERussianGuy for the motivation!" #o
 authors = "Gaelmare" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description = '''
-Lowcode mod to add hint rocks that generate above TFC mineral veins, also buffs some veins that were too rare. Recommended for anyone needing better access to minerals.
+Lowcode mod to buff some TFC veins that were too rare. Recommended for anyone needing better access to minerals.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.tfcgyres_orehints]]
+[[dependencies.tfcgyres_nohints]]
 modId = "minecraft"
 mandatory = true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
 versionRange = "[1.18.2,)"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.tfcgyres_orehints]] #optional
+[[dependencies.tfcgyres_nohints]] #optional
 # the modid of the dependency
 modId="tfc" #mandatory
 # Does this dependency have to exist - if not, ordering below must be specified
@@ -52,18 +52,6 @@ mandatory=true #mandatory
 # The version range of the dependency
 versionRange="[2.2.10,)" #mandatory
 # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
-ordering="AFTER"
-# Side this dependency is applied on - BOTH, CLIENT or SERVER
-side="BOTH"
-[[dependencies.tfcgyres_orehints]] #optional
-# the modid of the dependency
-modId="tfcgyres_nohints" #mandatory
-# Does this dependency have to exist - if not, ordering below must be specified
-mandatory=false #mandatory
-# The version range of the dependency
-versionRange="[1.5,)" #mandatory
-# An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
-# Load Ore Hints and Spawn changes after the Spawn changes, so the ore hints exist
 ordering="AFTER"
 # Side this dependency is applied on - BOTH, CLIENT or SERVER
 side="BOTH"
