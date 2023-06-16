@@ -1,0 +1,18 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "name": "Ore Vein Tweaks",
+  "category": "tfcgyres_orehints:tfcgyres_orehints",
+  "icon": "tfc:ore/graphite",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Adding hint rocks touched the mineral vein definitions, so why not make them better? Some of the current veins were too small and too rare.$(br2)Coal veins are now much larger horizontal discs with fewer inclusions. Most other mineral veins are larger and more common, but occur at the same depths."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Ore Veins on the Brink$()$(br2)Exploring the depths and heights of the world may be more rewarding! New veins below y-level 0 now exist for all metamorphic and igneous intrusive ores: metal, mineral, and diamonds/emeralds. These veins may be larger, denser, and purer.$(br2)In the mountains, new dense iron, copper and sulfur veins spawn."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 1
+}
