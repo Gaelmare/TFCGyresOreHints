@@ -175,8 +175,8 @@ DEEP_ORE_VEINS: Dict[str, Vein] = {
 #spawn rates tweaked or not, these are here for indicator rock settings
 MINERAL_VEINS: Dict[str, Vein] = {
     'high_sulfur': preset_vein('sulfur', 'cluster', ['igneous_extrusive'], 'gypsum', 20, ['rhyolite'], preset=REALLY_HIGH_MINERAL_ORE),
-    'bituminous_coal': preset_vein('bituminous_coal', 'disc', ['sedimentary'], preset=DEEP_COAL_ORE, height=6),
-    'lignite': preset_vein('lignite', 'disc', ['sedimentary'], preset=HIGH_COAL_ORE, height=6),
+    'bituminous_coal': preset_vein('bituminous_coal', 'disc', ['sedimentary'], preset=DEEP_COAL_ORE, height=3),
+    'lignite': preset_vein('lignite', 'disc', ['sedimentary'], preset=HIGH_COAL_ORE, height=3),
     'kaolinite': preset_vein('kaolinite', 'cluster', ['sedimentary'], preset=HIGH_MINERAL_ORE),
     'graphite': preset_vein('graphite', 'cluster', ['gneiss', 'marble', 'quartzite', 'schist'], preset=DEEP_MINERAL_ORE),
     'cinnabar': preset_vein('cinnabar', 'cluster', ['igneous_extrusive', 'quartzite', 'shale'], 'opal', 10, ['quartzite'], preset=DEEP_MINERAL_ORE),
