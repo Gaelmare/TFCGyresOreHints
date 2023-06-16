@@ -57,7 +57,7 @@ ordering="AFTER"
 side="BOTH"
 [[dependencies.tfcgyres_orehints]] #optional
 # the modid of the dependency
-modId="tfcgyres_nohints" #mandatory
+modId="tfcgyres_veinbuffs" #mandatory
 # Does this dependency have to exist - if not, ordering below must be specified
 mandatory=false #mandatory
 # The version range of the dependency
