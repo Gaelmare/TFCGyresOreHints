@@ -1,7 +1,7 @@
 #  Work under Copyright. Licensed under the EUPL.
 #  See the project README.md and LICENSE.txt for more information.
 
-from typing import Dict, List, Set, NamedTuple, Sequence, Optional, Literal, Tuple, Any
+from typing import Dict, List, NamedTuple, Optional, Tuple, Any
 
 class Rock(NamedTuple):
     category: str

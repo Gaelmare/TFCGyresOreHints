@@ -1,9 +1,7 @@
 # Handles generation of all world gen objects
 
-from typing import Union, get_args
-
 from mcresources import ResourceManager, utils
-from mcresources.type_definitions import ResourceIdentifier, JsonObject, Json, VerticalAnchor
+from mcresources.type_definitions import ResourceIdentifier, JsonObject, Json
 
 from constants import *
 
