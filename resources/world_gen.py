@@ -9,168 +9,128 @@ from constants import *
 
 
 def generate(rm: ResourceManager, HINT_GEN=True):
-    # Biome Feature Tags
-    # Biomes -> in_biome/<step>/<optional biome>
-    # in_biome/ -> other tags in the form feature/<name>s
-    # feature/ -> individual features
-
-    # Tags: in_biome/
-    placed_feature_118_hack(rm, 'in_biome/veins', *[
-        *('tfc:vein/%s' % v for v in MINERAL_VEINS.keys()),
-        *('tfc:vein/%s' % v for v in DEEP_MINERAL_VEINS.keys()),
-        *('tfc:vein/%s' % v for v in HIGH_ORE_VEINS.keys()),
-        *('tfc:vein/%s' % v for v in DEEP_ORE_VEINS.keys()),
-        *('tfc:vein/%s' % v for v in SURPRISE_VEINS.keys()),
-    ])
+    #add indicators to kaolinite
+    configured_placed_feature(rm, ('vein', 'kaolin_disc'), 'tfc:kaolin_disc_vein', {
+        'rarity': 40,
+        'min_y': 75,
+        'max_y': 110,
+        'size': 18,
+        'height': 6,
+        'density': 1.0,
+        'random_name': 'kaolin',
+        'biomes': '#tfc:kaolin_clay_spawns_in',
+        'blocks': [],
+        'indicator': {
+            'rarity': 12,
+            'depth': 5,
+            'underground_rarity': 1,
+            'underground_count': 3,
+            'blocks': [{
+                'block': 'tfc:rock/loose/%s' % MINERAL_INDICATORS.get('kaolin_disc')
+            }]
+        }
+    }, decorate_climate(min_rain=300, min_temp=18))
 
     # Ore Veins
-    for vein_name, vein in MINERAL_VEINS.items():
-        rocks = expand_rocks(vein.rocks, vein_name)
-        vein_config = {
-            'rarity': vein.rarity,
-            'min_y': utils.vertical_anchor(vein.min_y, 'absolute'),
-            'max_y': utils.vertical_anchor(vein.max_y, 'absolute'),
-            'size': vein.size,
-            'density': vein_density(vein.density),
-            'blocks': [{
-                'replace': ['tfc:rock/raw/%s' % rock],
-                'with': mineral_ore_blocks(vein, rock)
-            } for rock in rocks],
-            'random_name': vein_name,
-            'biomes': vein.biomes,
-        }
-        if HINT_GEN:
-            vein_config['indicator'] = {
-                'rarity': 12,
+    for vein_name, vein in ORE_VEINS.items():
+        rocks = expand_rocks(vein.rocks)
+        ore = ORES[vein.ore]  # standard ore
+        if ore.graded:  # graded ore vein
+            configured_placed_feature(rm, ('vein', vein_name), vein.vein_type, {
+                **vein.config(),
+                'random_name': vein_name,
                 'blocks': [{
-                    'block': 'tfc:rock/loose/%s' % MINERAL_INDICATORS.get(vein.ore)
-                }]
-            }
-
-        if vein.type == 'pipe':
-            vein_config['min_skew'] = 5
-            vein_config['max_skew'] = 13
-            vein_config['min_slant'] = 0
-            vein_config['max_slant'] = 2
-        if vein.type == 'disc':
-            vein_config['height'] = vein.height
-        configured_placed_feature(rm, ('vein', vein_name), 'tfc:%s_vein' % vein.type, vein_config)
-
-    for vein_name, vein in DEEP_MINERAL_VEINS.items():
-        rocks = expand_rocks(vein.rocks, vein_name)
-        vein_config = {
-            'rarity': vein.rarity,
-            'min_y': utils.vertical_anchor(vein.min_y, 'absolute'),
-            'max_y': utils.vertical_anchor(vein.max_y, 'absolute'),
-            'size': vein.size,
-            'density': vein_density(vein.density),
-            'blocks': [{
-                'replace': ['tfc:rock/raw/%s' % rock],
-                'with': mineral_ore_blocks(vein, rock)
-            } for rock in rocks],
-            'random_name': vein_name,
-            'biomes': vein.biomes,
-        }
-        if vein.type == 'pipe':
-            vein_config['min_skew'] = 5
-            vein_config['max_skew'] = 13
-            vein_config['min_slant'] = 0
-            vein_config['max_slant'] = 2
-        if vein.type == 'disc':
-            vein_config['height'] = vein.height
-        configured_placed_feature(rm, ('vein', vein_name), 'tfc:%s_vein' % vein.type, vein_config)
-
-    for vein_name, vein in HIGH_ORE_VEINS.items():
-        rocks = expand_rocks(vein.rocks, vein_name)
-        configured_placed_feature(rm, ('vein', vein_name), 'tfc:%s_vein' % vein.type, {
-            'rarity': vein.rarity,
-            'min_y': utils.vertical_anchor(vein.min_y, 'absolute'),
-            'max_y': utils.vertical_anchor(vein.max_y, 'absolute'),
-            'size': vein.size,
-            'density': vein_density(vein.density),
-            'blocks': [{
-                'replace': ['tfc:rock/raw/%s' % rock],
-                'with': vein_ore_blocks(vein, rock)
-            } for rock in rocks],  # no indicator for deep veins!
-            'random_name': vein_name,
-            'biomes': vein.biomes,
-            'indicator': {
-                'rarity': 12,
+                    'replace': ['tfc:rock/raw/%s' % rock],
+                    'with': vein_ore_blocks(vein, rock)
+                } for rock in rocks],
+                'indicator': {
+                    'rarity': vein.indicator_rarity,
+                    'depth': 35,
+                    'underground_rarity': vein.underground_rarity,
+                    'underground_count': vein.underground_count,
+                    'blocks': [{
+                        'block': 'tfc:ore/small_%s' % vein.ore
+                    }]
+                },
+            })
+        else:  # non-graded ore vein (mineral)
+            vein_config = {
+                **vein.config(),
+                'random_name': vein_name,
                 'blocks': [{
-                    'block': 'tfc:ore/small_%s' % vein.ore
-                }]
+                    'replace': ['tfc:rock/raw/%s' % rock],
+                    'with': mineral_ore_blocks(vein, rock)
+                } for rock in rocks],
             }
-        })
-
-    for vein_name, vein in DEEP_ORE_VEINS.items():
-        rocks = expand_rocks(vein.rocks, vein_name)
-        configured_placed_feature(rm, ('vein', vein_name), 'tfc:%s_vein' % vein.type, {
-            'rarity': vein.rarity,
-            'min_y': utils.vertical_anchor(vein.min_y, 'absolute'),
-            'max_y': utils.vertical_anchor(vein.max_y, 'absolute'),
-            'size': vein.size,
-            'density': vein_density(vein.density),
-            'blocks': [{
-                'replace': ['tfc:rock/raw/%s' % rock],
-                'with': vein_ore_blocks(vein, rock)
-            } for rock in rocks],  # no indicator for deep veins!
-            'random_name': vein_name,
-            'biomes': vein.biomes
-        })
+            if HINT_GEN and MINERAL_INDICATORS.get(vein.ore):
+                vein_config['indicator'] = {
+                    'rarity': 12,
+                    'depth': 35,
+                    'underground_rarity': vein.underground_rarity,
+                    'underground_count': vein.underground_count,
+                    'blocks': [{
+                        'block': 'tfc:rock/loose/%s' % MINERAL_INDICATORS.get(vein.ore)
+                    }]
+                }
+            configured_placed_feature(rm, ('vein', vein_name), vein.vein_type, vein_config)
 
     for vein_name, vein in SURPRISE_VEINS.items():
-        rocks = expand_rocks(vein.rocks, vein_name)
-        configured_placed_feature(rm, ('vein', vein_name), 'tfc:%s_vein' % vein.type, {
-            'rarity': vein.rarity,
-            'min_y': utils.vertical_anchor(vein.min_y, 'absolute'),
-            'max_y': utils.vertical_anchor(vein.max_y, 'absolute'),
-            'size': vein.size,
-            'density': vein_density(vein.density),
+        rocks = expand_rocks(vein.rocks)
+        ore = ORES[vein.ore]  # standard ore
+        configured_placed_feature(rm, ('vein', vein_name), vein.vein_type, {
+            **vein.config(),
+            'random_name': vein_name,
             'blocks': [{
                 'replace': ['tfc:rock/raw/%s' % rock],
                 'with': [{'weight': 90, 'block': 'tfc:ore/%s/%s' % (vein.ore, rock)},
-                         {'weight': 10, 'block': 'minecraft:lava'}] #surprise! How difficult would infested TFC stone be?
-            } for rock in rocks], #nod to CustomOreGen gem pipes
-            'random_name': vein_name,
-            'biomes': vein.biomes
+                         {'weight': 10, 'block': 'minecraft:lava'}] # surprise! How difficult would infested TFC stone be?
+            } for rock in rocks],
         })
 
+    # Adding to in_biome/veins, other veins are already in via vanilla tfc
+    rm.placed_feature_tag('in_biome/veins', *[
+        'tfc:vein/mountain_hematite', 'tfc:vein/mountain_limonite', 'tfc:vein/mountain_magnetite',
+        *('tfc:vein/%s' % v for v in SURPRISE_VEINS.keys()),
+    ])
 
-# Vein Helper Functions
-def mineral_ore_blocks(vein: Vein, rock: str) -> List[Dict[str, Any]]:
-    if vein.spoiler_ore is not None and rock in vein.spoiler_rocks:
-        ore_blocks = [{'weight': 100, 'block': 'tfc:ore/%s/%s' % (vein.ore, rock)}]
-        p = vein.spoiler_rarity * 0.01  # as a percentage of the overall vein
-        ore_blocks.append({
-            'weight': int(100 * p / (1 - p)),
-            'block': 'tfc:ore/%s/%s' % (vein.spoiler_ore, rock)
-        })
-    else:
-        ore_blocks = [{'block': 'tfc:ore/%s/%s' % (vein.ore, rock)}]
-    return ore_blocks
 
 def vein_ore_blocks(vein: Vein, rock: str) -> List[Dict[str, Any]]:
+    poor, normal, rich = vein.grade
     ore_blocks = [{
-        'weight': vein.poor,
+        'weight': poor,
         'block': 'tfc:ore/poor_%s/%s' % (vein.ore, rock)
     }, {
-        'weight': vein.normal,
+        'weight': normal,
         'block': 'tfc:ore/normal_%s/%s' % (vein.ore, rock)
     }, {
-        'weight': vein.rich,
+        'weight': rich,
         'block': 'tfc:ore/rich_%s/%s' % (vein.ore, rock)
     }]
-    if vein.spoiler_ore is not None and rock in vein.spoiler_rocks:
-        p = vein.spoiler_rarity * 0.01  # as a percentage of the overall vein
-        ore_blocks.append({
-            'weight': int(100 * p / (1 - p)),
-            'block': 'tfc:ore/%s/%s' % (vein.spoiler_ore, rock)
-        })
-    elif vein.deposits:
+    if False:  # todo: spoiler stuff?
+        if vein.spoiler_ore is not None and rock in vein.spoiler_rocks:
+            p = vein.spoiler_rarity * 0.01  # as a percentage of the overall vein
+            ore_blocks.append({
+                'weight': int(100 * p / (1 - p)),
+                'block': 'tfc:ore/%s/%s' % (vein.spoiler_ore, rock)
+            })
+    if vein.deposits:
         ore_blocks.append({
             'weight': 10,
             'block': 'tfc:deposit/%s/%s' % (vein.ore, rock)
         })
+    return ore_blocks
+
+
+def mineral_ore_blocks(vein: Vein, rock: str) -> List[Dict[str, Any]]:
+    if False:
+        if vein.spoiler_ore is not None and rock in vein.spoiler_rocks:
+            ore_blocks = [{'weight': 100, 'block': 'tfc:ore/%s/%s' % (vein.ore, rock)}]
+            p = vein.spoiler_rarity * 0.01  # as a percentage of the overall vein
+            ore_blocks.append({
+                'weight': int(100 * p / (1 - p)),
+                'block': 'tfc:ore/%s/%s' % (vein.spoiler_ore, rock)
+            })
+    ore_blocks = [{'block': 'tfc:ore/%s/%s' % (vein.ore, rock)}]
     return ore_blocks
 
 
@@ -181,20 +141,26 @@ def vein_density(density: int) -> float:
 
 # Value Providers
 
-def expand_rocks(rocks_list: List[str], path: Optional[str] = None) -> List[str]:
-    rocks = []
-    for rock_spec in rocks_list:
-        if rock_spec in ROCKS:
-            rocks.append(rock_spec)
-        elif rock_spec in ROCK_CATEGORIES:
-            rocks += [r for r, d in ROCKS.items() if d.category == rock_spec]
-        else:
-            raise RuntimeError('Unknown rock or rock category specification: %s at %s' % (rock_spec, path if path is not None else '??'))
-    return rocks
+def expand_rocks(rocks: list[str]) -> list[str]:
+    assert all(r in ROCKS or r in ROCK_CATEGORIES for r in rocks)
+    return [
+        rock
+        for spec in rocks
+        for rock in ([spec] if spec in ROCKS else [r for r, d in ROCKS.items() if d.category == spec])
+    ]
 
-def placed_feature_118_hack(rm, name_parts: ResourceIdentifier, *values: ResourceIdentifier):
-    placed_feature_tag(rm, name_parts, *values)
-    #configured_placed_feature(rm, name_parts, 'tfc:multiple', {'features': '#' + utils.resource_location(rm.domain, name_parts).join()})
+
+def decorate_climate(min_temp: Optional[float] = None, max_temp: Optional[float] = None, min_rain: Optional[float] = None, max_rain: Optional[float] = None, needs_forest: Optional[bool] = False, fuzzy: Optional[bool] = None, min_forest: Optional[str] = None, max_forest: Optional[str] = None) -> Json:
+    return {
+        'type': 'tfc:climate',
+        'min_temperature': min_temp,
+        'max_temperature': max_temp,
+        'min_rainfall': min_rain,
+        'max_rainfall': max_rain,
+        'min_forest': 'normal' if needs_forest else min_forest,
+        'max_forest': max_forest,
+        'fuzzy': fuzzy
+    }
 
 def placed_feature_tag(rm: ResourceManager, name_parts: ResourceIdentifier, *values: ResourceIdentifier):
     return rm.tag(name_parts, 'worldgen/placed_feature', *values)

@@ -1,7 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "name": "Ore Hints and Spawning",
-  "description": "Mineral veins now have hint rocks like metal veins have small nuggets! Ore veins are enriched, especially at the top and bottom of the world.$(br2)Thanks to AnodeCathode of TechNodeFirmaCraft for the \"hint rock\" idea and initial rock selections.",
-  "icon": "tfc:metal/propick/steel",
-  "sortnum": 3
-}

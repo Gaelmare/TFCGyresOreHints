@@ -50,15 +50,16 @@ def main():
             validate_resources()
         elif action == 'all':
             resources(hotswap=hotswap, do_worldgen=True)
+            generate_book.main()
         elif action == 'worldgen':
             resources(hotswap=hotswap, do_worldgen=True)
         elif action == 'book':
-            generate_book.main()
+            generate_book.main_with_args()
 
 def clean(local: Optional[str]):
     """ Cleans all generated resources files """
     clean_at('./src')
-    clean_at('./src_veinbuffs')
+#    clean_at('./src_veinbuffs')
     if local:
         clean_at(local)
 
@@ -102,7 +103,8 @@ def resources(hotswap: str = None, do_assets: bool = False, do_data: bool = Fals
     resources_at(ResourceManager('tfc', resource_dir='./src'), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
     if hotswap:
         resources_at(ResourceManager('tfc', resource_dir=hotswap), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
-    resources_at(ResourceManager('tfc', resource_dir='./src_veinbuffs'), do_assets, do_data, do_recipes, do_worldgen, do_advancements, do_hints = False)
+# no need for veinbuffs in 1.20
+#    resources_at(ResourceManager('tfc', resource_dir='./src_veinbuffs'), do_assets, do_data, do_recipes, do_worldgen, do_advancements, do_hints = False)
 
 
 def resources_at(rm: ResourceManager, do_assets: bool, do_data: bool, do_recipes: bool, do_worldgen: bool, do_advancements: bool, do_hints = True):

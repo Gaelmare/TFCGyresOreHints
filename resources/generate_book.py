@@ -1,8 +1,7 @@
-import os
 from argparse import ArgumentParser
 from typing import Optional
 
-from constants import MINERAL_INDICATORS, PUB_INDICATORS
+from constants import PUB_INDICATORS
 from patchouli import *
 from mcresources import ResourceManager
 from mcresources import utils
@@ -37,7 +36,6 @@ def main(translate_lang: str, local_minecraft_dir: Optional[str], validate: bool
 #    i18n.flush()
 
     rm = ResourceManager('tfc', './src')
-    #rm = ResourceManager('tfcgyres_orehints', 'src')
     if validate:
         rm = validating_rm
     i18n = I18n(translate_lang, validate)
@@ -72,10 +70,10 @@ def make_book(rm: ResourceManager, i18n: I18n, local_instance: bool = False, noh
 #    rm.domain = 'tfcgyres_orehints'  # DOMAIN CHANGE
     book = Book(rm, 'field_guide', {}, i18n, local_instance, reverse_translate)
 
-    book.category('tfcgyres_orehints', 'Ore Hints and Spawning', 'Mineral veins now have hint rocks like metal veins have small nuggets! $(br2)Thanks to AnodeCathode of TechNodeFirmaCraft for the "hint rock" idea and initial rock selections.', 'tfc:metal/propick/steel', is_sorted=True, entries=(
+    book.category('tfcgyres_orehints', 'Ore Hints and Spawning', 'Mineral veins now have hint rocks like metal veins have small nuggets! $(br2)Thanks to AnodeCathode of TechNodeFirmaCraft for the "hint rock" idea and initial rock selections.$(br2)Additional rich iron veins spawn in the mountains above y=90.', 'tfc:metal/propick/steel', is_sorted=True, entries=(
         entry('orehints', 'Mineral Hints', 'tfc:ore/graphite', pages=(
-            text('Finding TFC mineral veins is easier. Hint rocks now generate in the world near mineral veins just like small metal nuggets from metal ores.$(br)Look for these rocks on the surface and in caves where they don\'t belong, and there\'s likely a mineral vein around! Cave indicators for every metal vein also spawn.'),
-            text('$(bold){:_<12s}'.format('Ore') + '{:_>16s}'.format('Hint Rock$(br)')+'$()'+''.join([('{0:_<16s}{1:_>10s}').format(min, PUB_INDICATORS[min]).title()+'$(l:the_world/ores_and_minerals#'+min+')$(br)' for min in PUB_INDICATORS])))),
+            text('Finding TFC mineral veins is easier with OreHints!$(br2)Hint rocks generate in the world near mineral veins just like nuggets for metal ores. Coal and halite do not currently have working indicators.$(br)Find these rocks on the surface where they don\'t match, and in caves, and there\'s likely a mineral vein around! Underground indicators for every metal vein also spawn.'),
+            text('$(bold){:_<12s}'.format('Ore') + '{:_>16s}'.format('Hint Rock$(br)')+'$()'+''.join([('$(l:the_world/ores_and_minerals#{0}){1:_<16s}$(){2:_>10s}').format(min, min.title(), PUB_INDICATORS[min].title())+'$(br)' for min in PUB_INDICATORS])))),
     ))
 
     book.build()

@@ -2,7 +2,7 @@
   "__comment__": "This file was automatically created by mcresources",
   "type": "tfc:cluster_vein",
   "config": {
-    "rarity": 90,
+    "rarity": 70,
     "density": 0.4,
     "min_y": 10,
     "max_y": 90,
@@ -147,7 +147,7 @@
       "rarity": 24,
       "depth": 35,
       "underground_rarity": 1,
-      "underground_count": 4,
+      "underground_count": 3,
       "blocks": [
         {
           "block": "tfc:ore/small_limonite"
