@@ -1,0 +1,18 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "name": "Mineral Hints",
+  "category": "tfc:tfcgyres_orehints",
+  "icon": "tfc:ore/graphite",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Finding TFC mineral veins is easier with OreHints!$(br2)Hint rocks generate in the world near mineral veins just like nuggets for metal ores. Coal and halite do not currently have working indicators.$(br)Find these rocks on the surface where they don't match, and in caves, and there's likely a mineral vein around! Underground indicators for every metal vein also spawn."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Ore___________Hint Rock$(br)$()$(l:the_world/ores_and_minerals#bituminous_coal)Bituminous_Coal_$()____Basalt$(br)$(l:the_world/ores_and_minerals#lignite)Lignite_________$()____Basalt$(br)$(l:the_world/ores_and_minerals#graphite)Graphite________$()_Claystone$(br)$(l:the_world/ores_and_minerals#cinnabar)Cinnabar________$()____Gneiss$(br)$(l:the_world/ores_and_minerals#cryolite)Cryolite________$()_____Slate$(br)$(l:the_world/ores_and_minerals#saltpeter)Saltpeter_______$()___Diorite$(br)$(l:the_world/ores_and_minerals#sulfur)Sulfur__________$()_____Shale$(br)$(l:the_world/ores_and_minerals#sylvite)Sylvite_________$()__Dolomite$(br)$(l:the_world/ores_and_minerals#borax)Borax___________$()_____Chert$(br)$(l:the_world/ores_and_minerals#lapis_lazuli)Lapis_Lazuli____$()__Andesite$(br)$(l:the_world/ores_and_minerals#gypsum)Gypsum__________$()_Quartzite$(br)$(l:the_world/ores_and_minerals#halite)Halite__________$()__Phyllite$(br)$(l:the_world/ores_and_minerals#diamond)Diamond_________$()_____Chalk$(br)$(l:the_world/ores_and_minerals#kaolinite)Kaolinite_______$()____Marble$(br)"
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 0
+}
