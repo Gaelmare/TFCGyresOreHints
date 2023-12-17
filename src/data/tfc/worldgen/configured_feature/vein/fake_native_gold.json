@@ -1,16 +1,13 @@
 {
   "__comment__": "This file was automatically created by mcresources",
-  "type": "tfc:disc_vein",
+  "type": "tfc:cluster_vein",
   "config": {
-    "rarity": 10,
-    "min_y": {
-      "absolute": 80
-    },
-    "max_y": {
-      "absolute": 180
-    },
+    "rarity": 16,
+    "density": 0.35,
+    "min_y": -50,
+    "max_y": 70,
     "size": 15,
-    "density": 0.8,
+    "random_name": "fake_native_gold",
     "blocks": [
       {
         "replace": [
@@ -18,7 +15,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/sulfur/rhyolite"
+            "block": "tfc:ore/pyrite/rhyolite"
           }
         ]
       },
@@ -28,7 +25,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/sulfur/basalt"
+            "block": "tfc:ore/pyrite/basalt"
           }
         ]
       },
@@ -38,7 +35,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/sulfur/andesite"
+            "block": "tfc:ore/pyrite/andesite"
           }
         ]
       },
@@ -48,7 +45,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/sulfur/dacite"
+            "block": "tfc:ore/pyrite/dacite"
           }
         ]
       },
@@ -58,7 +55,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/sulfur/granite"
+            "block": "tfc:ore/pyrite/granite"
           }
         ]
       },
@@ -68,7 +65,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/sulfur/diorite"
+            "block": "tfc:ore/pyrite/diorite"
           }
         ]
       },
@@ -78,21 +75,10 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/sulfur/gabbro"
+            "block": "tfc:ore/pyrite/gabbro"
           }
         ]
       }
-    ],
-    "random_name": "volcanic_sulfur",
-    "biomes": "#tfc:is_volcanic",
-    "indicator": {
-      "rarity": 12,
-      "blocks": [
-        {
-          "block": "tfc:rock/loose/shale"
-        }
-      ]
-    },
-    "height": 6
+    ]
   }
 }

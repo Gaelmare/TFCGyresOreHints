@@ -2,15 +2,15 @@
   "__comment__": "This file was automatically created by mcresources",
   "type": "tfc:disc_vein",
   "config": {
-    "rarity": 90,
-    "min_y": {
-      "absolute": -48
-    },
-    "max_y": {
-      "absolute": 100
-    },
-    "size": 25,
+    "rarity": 210,
     "density": 0.9,
+    "min_y": -35,
+    "max_y": -12,
+    "project": true,
+    "project_offset": true,
+    "size": 50,
+    "height": 3,
+    "random_name": "bituminous_coal",
     "blocks": [
       {
         "replace": [
@@ -83,15 +83,16 @@
         ]
       }
     ],
-    "random_name": "bituminous_coal",
     "indicator": {
       "rarity": 12,
+      "depth": 35,
+      "underground_rarity": 1,
+      "underground_count": 4,
       "blocks": [
         {
           "block": "tfc:rock/loose/basalt"
         }
       ]
-    },
-    "height": 3
+    }
   }
 }

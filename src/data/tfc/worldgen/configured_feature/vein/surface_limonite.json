@@ -2,15 +2,12 @@
   "__comment__": "This file was automatically created by mcresources",
   "type": "tfc:cluster_vein",
   "config": {
-    "rarity": 15,
-    "min_y": {
-      "absolute": 120
-    },
-    "max_y": {
-      "absolute": 210
-    },
-    "size": 15,
-    "density": 0.8,
+    "rarity": 90,
+    "density": 0.4,
+    "min_y": 10,
+    "max_y": 90,
+    "size": 20,
+    "random_name": "surface_limonite",
     "blocks": [
       {
         "replace": [
@@ -18,20 +15,16 @@
         ],
         "with": [
           {
-            "weight": 10,
+            "weight": 35,
             "block": "tfc:ore/poor_limonite/shale"
           },
           {
-            "weight": 30,
+            "weight": 40,
             "block": "tfc:ore/normal_limonite/shale"
           },
           {
-            "weight": 60,
-            "block": "tfc:ore/rich_limonite/shale"
-          },
-          {
             "weight": 25,
-            "block": "tfc:ore/ruby/shale"
+            "block": "tfc:ore/rich_limonite/shale"
           }
         ]
       },
@@ -41,15 +34,15 @@
         ],
         "with": [
           {
-            "weight": 10,
+            "weight": 35,
             "block": "tfc:ore/poor_limonite/claystone"
           },
           {
-            "weight": 30,
+            "weight": 40,
             "block": "tfc:ore/normal_limonite/claystone"
           },
           {
-            "weight": 60,
+            "weight": 25,
             "block": "tfc:ore/rich_limonite/claystone"
           }
         ]
@@ -60,20 +53,16 @@
         ],
         "with": [
           {
-            "weight": 10,
+            "weight": 35,
             "block": "tfc:ore/poor_limonite/limestone"
           },
           {
-            "weight": 30,
+            "weight": 40,
             "block": "tfc:ore/normal_limonite/limestone"
           },
           {
-            "weight": 60,
-            "block": "tfc:ore/rich_limonite/limestone"
-          },
-          {
             "weight": 25,
-            "block": "tfc:ore/ruby/limestone"
+            "block": "tfc:ore/rich_limonite/limestone"
           }
         ]
       },
@@ -83,15 +72,15 @@
         ],
         "with": [
           {
-            "weight": 10,
+            "weight": 35,
             "block": "tfc:ore/poor_limonite/conglomerate"
           },
           {
-            "weight": 30,
+            "weight": 40,
             "block": "tfc:ore/normal_limonite/conglomerate"
           },
           {
-            "weight": 60,
+            "weight": 25,
             "block": "tfc:ore/rich_limonite/conglomerate"
           }
         ]
@@ -102,15 +91,15 @@
         ],
         "with": [
           {
-            "weight": 10,
+            "weight": 35,
             "block": "tfc:ore/poor_limonite/dolomite"
           },
           {
-            "weight": 30,
+            "weight": 40,
             "block": "tfc:ore/normal_limonite/dolomite"
           },
           {
-            "weight": 60,
+            "weight": 25,
             "block": "tfc:ore/rich_limonite/dolomite"
           }
         ]
@@ -121,15 +110,15 @@
         ],
         "with": [
           {
-            "weight": 10,
+            "weight": 35,
             "block": "tfc:ore/poor_limonite/chert"
           },
           {
-            "weight": 30,
+            "weight": 40,
             "block": "tfc:ore/normal_limonite/chert"
           },
           {
-            "weight": 60,
+            "weight": 25,
             "block": "tfc:ore/rich_limonite/chert"
           }
         ]
@@ -140,23 +129,25 @@
         ],
         "with": [
           {
-            "weight": 10,
+            "weight": 35,
             "block": "tfc:ore/poor_limonite/chalk"
           },
           {
-            "weight": 30,
+            "weight": 40,
             "block": "tfc:ore/normal_limonite/chalk"
           },
           {
-            "weight": 60,
+            "weight": 25,
             "block": "tfc:ore/rich_limonite/chalk"
           }
         ]
       }
     ],
-    "random_name": "high_limonite",
     "indicator": {
-      "rarity": 12,
+      "rarity": 24,
+      "depth": 35,
+      "underground_rarity": 1,
+      "underground_count": 4,
       "blocks": [
         {
           "block": "tfc:ore/small_limonite"
