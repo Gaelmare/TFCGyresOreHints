@@ -20,11 +20,11 @@ def generate(rm: ResourceManager, HINT_GEN=True):
         'blocks': [],
         'indicator': {
             'rarity': 12,
-            'depth': 5,
+            'depth': 35,
             'underground_rarity': 1,
             'underground_count': 3,
             'blocks': [{
-                'block': 'tfc:rock/loose/%s' % MINERAL_INDICATORS.get('kaolin_disc')
+                'block': 'tfc:plant/blood_lily',
             }]
         }
     }, decorate_climate(min_rain=300, min_temp=18))

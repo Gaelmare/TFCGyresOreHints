@@ -160,7 +160,6 @@ ORE_GRADES: Dict[str, OreGrade] = {
 MINERAL_INDICATORS: Dict[str, str] = {
     'bituminous_coal': 'basalt',
     'lignite': 'basalt',
-    'kaolin_disc': 'marble',
     'graphite': 'claystone',
     'cinnabar': 'gneiss',
     'cryolite': 'slate',
@@ -173,11 +172,10 @@ MINERAL_INDICATORS: Dict[str, str] = {
     'halite': 'phyllite',
     'diamond': 'chalk',
 }
-#make kaolinite match TFC anchor entry
-PUB_INDICATORS = MINERAL_INDICATORS.copy()
-PUB_INDICATORS['kaolinite'] = PUB_INDICATORS['kaolin_disc']
 
-del PUB_INDICATORS['kaolin_disc']
+#Todo: do we need this anymore?
+PUB_INDICATORS = MINERAL_INDICATORS.copy()
+
 
 
 DEFAULT_FORGE_ORE_TAGS: Tuple[str, ...] = ('coal', 'diamond', 'emerald', 'gold', 'iron', 'lapis', 'netherite_scrap', 'quartz', 'redstone')

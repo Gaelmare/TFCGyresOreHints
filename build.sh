@@ -1,6 +1,6 @@
 #!/bin/bash
 project=TFCGyres-OreHints
-version=2.1
+version=2.2
 
 file=${project}-${version}.jar
 nohint_file=${project/OreHints/VeinBuffs}-${version}.jar
