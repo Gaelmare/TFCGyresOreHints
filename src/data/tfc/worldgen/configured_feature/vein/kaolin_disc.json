@@ -15,7 +15,7 @@
       "rarity": 12,
       "depth": 35,
       "underground_rarity": 1,
-      "underground_count": 3,
+      "underground_count": 0,
       "blocks": [
         {
           "block": "tfc:plant/blood_lily"

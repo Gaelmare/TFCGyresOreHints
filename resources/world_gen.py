@@ -22,7 +22,7 @@ def generate(rm: ResourceManager, HINT_GEN=True):
             'rarity': 12,
             'depth': 35,
             'underground_rarity': 1,
-            'underground_count': 3,
+            'underground_count': 0, # can't have underground plants!
             'blocks': [{
                 'block': 'tfc:plant/blood_lily',
             }]
