@@ -104,7 +104,7 @@ def resources(hotswap: str = None, do_assets: bool = False, do_data: bool = Fals
     if hotswap:
         resources_at(ResourceManager('tfc', resource_dir=hotswap), do_assets, do_data, do_recipes, do_worldgen, do_advancements)
 # no need for veinbuffs in 1.20
-#    resources_at(ResourceManager('tfc', resource_dir='./src_veinbuffs'), do_assets, do_data, do_recipes, do_worldgen, do_advancements, do_hints = False)
+    resources_at(ResourceManager('tfc', resource_dir='./src_veinbuffs'), do_assets, do_data, do_recipes, do_worldgen, do_advancements, do_hints = False)
 
 
 def resources_at(rm: ResourceManager, do_assets: bool, do_data: bool, do_recipes: bool, do_worldgen: bool, do_advancements: bool, do_hints = True):

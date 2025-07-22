@@ -24,7 +24,7 @@ class I18n:
                 raise ValueError('Cannot validate book for lang %s, as resources/lang/%s.json does not exist' % (lang, lang))
             print('Writing default translation for language %s to %s' % (self.lang, self.lang_path))
             with open(self.lang_path, 'w', encoding='utf-8') as f:
-                f.write('{}\n')
+                f.write("{test='NONE'}\n")
 
         # Read the existing translation
         with open(self.lang_path, 'r', encoding='utf-8') as f:
@@ -79,6 +79,7 @@ class I18n:
             assert self.before == self.after, 'Validation error translating book to lang \'%s\'' % self.lang
         with open(self.lang_path, 'w', encoding='utf-8') as f:
             unique_count = len(self.after) if self.is_root() else sum(k != v for k, v in self.after.items())
-            print('Writing updated translation for language %s: %d / %d (%.2f%%)' % (self.lang, unique_count, len(self.after), 100 * unique_count / len(self.after)))
+            if unique_count != 0:
+                print('Writing updated translation for language %s: %d / %d (%.2f%%)' % (self.lang, unique_count, len(self.after), 100 * unique_count / len(self.after)))
             json.dump(self.after, f, indent=2, ensure_ascii=False)
 

@@ -7,30 +7,10 @@ from constants import *
 
 
 def generate(rm: ResourceManager, HINT_GEN=True):
-    #add indicators to kaolinite
-    configured_placed_feature(rm, ('vein', 'kaolin_disc'), 'tfc:kaolin_disc_vein', {
-        'rarity': 40,
-        'min_y': 75,
-        'max_y': 110,
-        'size': 18,
-        'height': 6,
-        'density': 1.0,
-        'random_name': 'kaolin',
-        'biomes': '#tfc:kaolin_clay_spawns_in',
-        'blocks': [],
-        'indicator': {
-            'rarity': 12,
-            'depth': 35,
-            'underground_rarity': 1,
-            'underground_count': 0, # can't have underground plants!
-            'blocks': [{
-                'block': 'tfc:plant/blood_lily',
-            }]
-        }
-    }, decorate_climate(min_rain=300, min_temp=18))
+    VEINS = ORE_VEINS if HINT_GEN else ORE_VEINS_NOHINTS
 
     # Ore Veins
-    for vein_name, vein in ORE_VEINS.items():
+    for vein_name, vein in VEINS.items():
         rocks = expand_rocks(vein.rocks)
         ore = ORES[vein.ore]  # standard ore
         if ore.graded:  # graded ore vein
