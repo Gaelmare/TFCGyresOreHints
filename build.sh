@@ -1,6 +1,6 @@
 #!/bin/bash
 project=TFCGyres-OreHints
-version=2.2
+version=2.3
 
 file=${project}-${version}.jar
 nohint_file=${project/OreHints/VeinBuffs}-${version}.jar
@@ -17,9 +17,9 @@ python resources book
 cd src
 
 jar --create --file ../${file} *
-#cd ../src_veinbuffs
-#rm -r assets
-#jar --create --file ../${nohint_file} *
+cd ../src_veinbuffs
+rm -r assets
+jar --create --file ../${nohint_file} *
 
 cd ..
 ls -l *.jar
