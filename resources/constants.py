@@ -196,6 +196,14 @@ def preset_vein(ore: str, vein_type: str, rocks: List[str], spoiler_ore: Optiona
 
 #1.20 config starts here
 
+ORE_VEINS_NOHINTS: dict[str, Vein] = {
+    # Added iron in mountains, much more common because terrain this high is rare
+    'mountain_hematite': Vein.new('hematite', 10, 20, 90, 180, 0.5, ('igneous_extrusive',), grade=RICH, indicator=12),
+    'mountain_magnetite': Vein.new('magnetite', 20, 20, 90, 180, 0.5, ('sedimentary',), grade=RICH, indicator=12),
+    'mountain_limonite': Vein.new('limonite', 20, 20, 90, 180, 0.5, ('sedimentary',), grade=RICH, indicator=12),
+}
+
+
 ORE_VEINS: dict[str, Vein] = {
     # Copper
     # Native - only in IE, only surface, and common to compensate for the y-level getting cut off.
@@ -225,8 +233,8 @@ ORE_VEINS: dict[str, Vein] = {
     # Tin - bronze T2, rare situation (II uplift mountain) but common and rich.
     'surface_cassiterite': Vein.new('cassiterite', 5, 15, 80, 180, 0.4, ('igneous_intrusive',), grade=NORMAL, deposits=True),
 
-    # Bismuth - bronze T2 surface via Sed, deep and rich via II
-    'surface_bismuthinite': Vein.new('bismuthinite', 32, 20, 40, 130, 0.3, ('sedimentary',), grade=POOR, indicator=14),
+    # Bismuth - bronze T2 surface via Sed, deep and rich via II, double rarity!
+    'surface_bismuthinite': Vein.new('bismuthinite', 64, 20, 40, 130, 0.3, ('sedimentary',), grade=POOR, indicator=14),
     # no change
     # 'normal_bismuthinite': Vein.new('bismuthinite', 45, 40, -80, 20, 0.6, ('igneous_intrusive',), grade=RICH, indicator=0, deep_indicator=(1, 4)),
 
@@ -235,7 +243,7 @@ ORE_VEINS: dict[str, Vein] = {
     # no change
     # 'normal_sphalerite': Vein.new('sphalerite', 45, 40, -80, 20, 0.6, ('igneous_intrusive',), grade=RICH, indicator=0, deep_indicator=(1, 5)),
 
-    # Iron - both surface via IE and Sed. IE has one, Sed has two, so the two are higher rarity
+    # Iron - both surface via IE and Sed. IE has one, Sed has two, so the two are higher rarity, decrease rarity!
     'surface_hematite': Vein.new('hematite', 35, 20, 10, 90, 0.4, ('igneous_extrusive',), grade=NORMAL, indicator=24),
     'surface_magnetite': Vein.new('magnetite', 70, 20, 10, 90, 0.4, ('sedimentary',), grade=NORMAL, indicator=24),
     'surface_limonite': Vein.new('limonite', 70, 20, 10, 90, 0.4, ('sedimentary',), grade=NORMAL, indicator=24),
@@ -245,7 +253,7 @@ ORE_VEINS: dict[str, Vein] = {
     'mountain_magnetite': Vein.new('magnetite', 20, 20, 90, 180, 0.5, ('sedimentary',), grade=RICH, indicator=12),
     'mountain_limonite': Vein.new('limonite', 20, 20, 90, 180, 0.5, ('sedimentary',), grade=RICH, indicator=12),
 
-    # Nickel - only deep spawning II. Extra veins in gabbro
+    # Nickel - only deep spawning II. Extra veins in gabbro, add deep indicators
     'normal_garnierite': Vein.new('garnierite', 25, 18, -80, 0, 0.3, ('igneous_intrusive',), grade=NORMAL),
     # no change, although that's a lot of nickel nuggets!
     #'gabbro_garnierite': Vein.new('garnierite', 20, 30, -80, 0, 0.6, ('gabbro',), grade=RICH, indicator=0, deep_indicator=(1, 7)),
@@ -253,9 +261,9 @@ ORE_VEINS: dict[str, Vein] = {
     # Graphite - for steel, found in low MM. Along with Kao, which is high altitude sed (via clay deposits)
     'graphite': Vein.new('graphite', 20, 20, -30, 60, 0.4, ('gneiss', 'marble', 'quartzite', 'schist')),
 
-    # Coal, spawns roughly based on IRL grade (lignite -> bituminous -> anthracite), big flat discs
-    'lignite': Vein.new('lignite', 160, 40, -20, -8, 0.85, ('sedimentary',), vein_type='disc', height=2, project='offset'),
-    'bituminous_coal': Vein.new('bituminous_coal', 210, 50, -35, -12, 0.9, ('sedimentary',), vein_type='disc', height=3, project='offset'),
+    # Coal, spawns roughly based on IRL grade (lignite -> bituminous -> anthracite), big flat discs, increase rarity
+    'lignite': Vein.new('lignite', 210, 40, -20, -8, 0.85, ('sedimentary',), vein_type='disc', height=2, project='offset'),
+    'bituminous_coal': Vein.new('bituminous_coal', 250, 50, -35, -12, 0.9, ('sedimentary',), vein_type='disc', height=3, project='offset'),
 
     # Sulfur spawns near lava level in any low-level rock, common, but small veins
     'sulfur': Vein.new('sulfur', 4, 18, -64, -45, 0.25, ('igneous_intrusive', 'metamorphic'), vein_type='disc', height=5, near_lava=True),
