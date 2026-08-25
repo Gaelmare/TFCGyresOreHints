@@ -79,13 +79,23 @@
             "block": "tfc:ore/gypsum/chalk"
           }
         ]
+      },
+      {
+        "replace": [
+          "tfc:rock/raw/tuff"
+        ],
+        "with": [
+          {
+            "block": "tfc:ore/gypsum/tuff"
+          }
+        ]
       }
     ],
     "indicator": {
       "rarity": 12,
       "depth": 35,
       "underground_rarity": 1,
-      "underground_count": 3,
+      "underground_count": 0,
       "blocks": [
         {
           "block": "tfc:rock/loose/quartzite"

@@ -2,9 +2,6 @@
   "__comment__": "This file was automatically created by mcresources",
   "replace": false,
   "values": [
-    "tfc:vein/mountain_hematite",
-    "tfc:vein/mountain_limonite",
-    "tfc:vein/mountain_magnetite",
     "tfc:vein/surprise_diamond",
     "tfc:vein/surprise_emerald"
   ]

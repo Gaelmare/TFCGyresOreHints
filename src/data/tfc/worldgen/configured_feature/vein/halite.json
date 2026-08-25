@@ -18,7 +18,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/halite/shale"
+            "block": "tfc:halite"
           }
         ]
       },
@@ -28,7 +28,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/halite/claystone"
+            "block": "tfc:halite"
           }
         ]
       },
@@ -38,7 +38,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/halite/limestone"
+            "block": "tfc:halite"
           }
         ]
       },
@@ -48,7 +48,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/halite/conglomerate"
+            "block": "tfc:halite"
           }
         ]
       },
@@ -58,7 +58,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/halite/dolomite"
+            "block": "tfc:halite"
           }
         ]
       },
@@ -68,7 +68,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/halite/chert"
+            "block": "tfc:halite"
           }
         ]
       },
@@ -78,7 +78,17 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/halite/chalk"
+            "block": "tfc:halite"
+          }
+        ]
+      },
+      {
+        "replace": [
+          "tfc:rock/raw/tuff"
+        ],
+        "with": [
+          {
+            "block": "tfc:halite"
           }
         ]
       }
@@ -87,7 +97,7 @@
       "rarity": 12,
       "depth": 35,
       "underground_rarity": 1,
-      "underground_count": 3,
+      "underground_count": 0,
       "blocks": [
         {
           "block": "tfc:rock/loose/phyllite"

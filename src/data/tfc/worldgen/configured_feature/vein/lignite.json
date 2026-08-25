@@ -18,7 +18,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/lignite/shale"
+            "block": "tfc:lignite"
           }
         ]
       },
@@ -28,7 +28,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/lignite/claystone"
+            "block": "tfc:lignite"
           }
         ]
       },
@@ -38,7 +38,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/lignite/limestone"
+            "block": "tfc:lignite"
           }
         ]
       },
@@ -48,7 +48,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/lignite/conglomerate"
+            "block": "tfc:lignite"
           }
         ]
       },
@@ -58,7 +58,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/lignite/dolomite"
+            "block": "tfc:lignite"
           }
         ]
       },
@@ -68,7 +68,7 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/lignite/chert"
+            "block": "tfc:lignite"
           }
         ]
       },
@@ -78,7 +78,17 @@
         ],
         "with": [
           {
-            "block": "tfc:ore/lignite/chalk"
+            "block": "tfc:lignite"
+          }
+        ]
+      },
+      {
+        "replace": [
+          "tfc:rock/raw/tuff"
+        ],
+        "with": [
+          {
+            "block": "tfc:lignite"
           }
         ]
       }
@@ -87,7 +97,7 @@
       "rarity": 12,
       "depth": 35,
       "underground_rarity": 1,
-      "underground_count": 3,
+      "underground_count": 0,
       "blocks": [
         {
           "block": "tfc:rock/loose/basalt"

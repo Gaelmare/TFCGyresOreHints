@@ -2,12 +2,12 @@
   "__comment__": "This file was automatically created by mcresources",
   "type": "tfc:cluster_vein",
   "config": {
-    "rarity": 35,
-    "density": 0.4,
-    "min_y": 10,
-    "max_y": 90,
+    "rarity": 12,
+    "density": 0.5,
+    "min_y": 90,
+    "max_y": 250,
     "size": 20,
-    "random_name": "surface_hematite",
+    "random_name": "montane_hematite",
     "blocks": [
       {
         "replace": [
@@ -15,15 +15,15 @@
         ],
         "with": [
           {
-            "weight": 35,
+            "weight": 15,
             "block": "tfc:ore/poor_hematite/rhyolite"
           },
           {
-            "weight": 40,
+            "weight": 25,
             "block": "tfc:ore/normal_hematite/rhyolite"
           },
           {
-            "weight": 25,
+            "weight": 60,
             "block": "tfc:ore/rich_hematite/rhyolite"
           }
         ]
@@ -34,15 +34,15 @@
         ],
         "with": [
           {
-            "weight": 35,
+            "weight": 15,
             "block": "tfc:ore/poor_hematite/basalt"
           },
           {
-            "weight": 40,
+            "weight": 25,
             "block": "tfc:ore/normal_hematite/basalt"
           },
           {
-            "weight": 25,
+            "weight": 60,
             "block": "tfc:ore/rich_hematite/basalt"
           }
         ]
@@ -53,15 +53,15 @@
         ],
         "with": [
           {
-            "weight": 35,
+            "weight": 15,
             "block": "tfc:ore/poor_hematite/andesite"
           },
           {
-            "weight": 40,
+            "weight": 25,
             "block": "tfc:ore/normal_hematite/andesite"
           },
           {
-            "weight": 25,
+            "weight": 60,
             "block": "tfc:ore/rich_hematite/andesite"
           }
         ]
@@ -72,15 +72,15 @@
         ],
         "with": [
           {
-            "weight": 35,
+            "weight": 15,
             "block": "tfc:ore/poor_hematite/dacite"
           },
           {
-            "weight": 40,
+            "weight": 25,
             "block": "tfc:ore/normal_hematite/dacite"
           },
           {
-            "weight": 25,
+            "weight": 60,
             "block": "tfc:ore/rich_hematite/dacite"
           }
         ]

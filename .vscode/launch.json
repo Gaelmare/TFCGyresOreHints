@@ -1,0 +1,43 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: resources (all)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/resources",
+            "args": ["all"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: resources (worldgen)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/resources",
+            "args": ["worldgen"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: resources (custom args)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/resources",
+            "args": "${input:resourcesArgs}",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ],
+    "inputs": [
+        {
+            "id": "resourcesArgs",
+            "type": "promptString",
+            "description": "Arguments to pass to resources/__main__.py (e.g. 'worldgen' or 'all --local C:/path')",
+            "default": "all"
+        }
+    ]
+}

@@ -2,12 +2,12 @@
   "__comment__": "This file was automatically created by mcresources",
   "type": "tfc:cluster_vein",
   "config": {
-    "rarity": 70,
-    "density": 0.4,
-    "min_y": 10,
-    "max_y": 90,
+    "rarity": 25,
+    "density": 0.5,
+    "min_y": 90,
+    "max_y": 250,
     "size": 20,
-    "random_name": "surface_limonite",
+    "random_name": "montane_limonite",
     "blocks": [
       {
         "replace": [
@@ -15,15 +15,15 @@
         ],
         "with": [
           {
-            "weight": 35,
+            "weight": 15,
             "block": "tfc:ore/poor_limonite/shale"
           },
           {
-            "weight": 40,
+            "weight": 25,
             "block": "tfc:ore/normal_limonite/shale"
           },
           {
-            "weight": 25,
+            "weight": 60,
             "block": "tfc:ore/rich_limonite/shale"
           }
         ]
@@ -34,15 +34,15 @@
         ],
         "with": [
           {
-            "weight": 35,
+            "weight": 15,
             "block": "tfc:ore/poor_limonite/claystone"
           },
           {
-            "weight": 40,
+            "weight": 25,
             "block": "tfc:ore/normal_limonite/claystone"
           },
           {
-            "weight": 25,
+            "weight": 60,
             "block": "tfc:ore/rich_limonite/claystone"
           }
         ]
@@ -53,15 +53,15 @@
         ],
         "with": [
           {
-            "weight": 35,
+            "weight": 15,
             "block": "tfc:ore/poor_limonite/limestone"
           },
           {
-            "weight": 40,
+            "weight": 25,
             "block": "tfc:ore/normal_limonite/limestone"
           },
           {
-            "weight": 25,
+            "weight": 60,
             "block": "tfc:ore/rich_limonite/limestone"
           }
         ]
@@ -72,15 +72,15 @@
         ],
         "with": [
           {
-            "weight": 35,
+            "weight": 15,
             "block": "tfc:ore/poor_limonite/conglomerate"
           },
           {
-            "weight": 40,
+            "weight": 25,
             "block": "tfc:ore/normal_limonite/conglomerate"
           },
           {
-            "weight": 25,
+            "weight": 60,
             "block": "tfc:ore/rich_limonite/conglomerate"
           }
         ]
@@ -91,15 +91,15 @@
         ],
         "with": [
           {
-            "weight": 35,
+            "weight": 15,
             "block": "tfc:ore/poor_limonite/dolomite"
           },
           {
-            "weight": 40,
+            "weight": 25,
             "block": "tfc:ore/normal_limonite/dolomite"
           },
           {
-            "weight": 25,
+            "weight": 60,
             "block": "tfc:ore/rich_limonite/dolomite"
           }
         ]
@@ -110,15 +110,15 @@
         ],
         "with": [
           {
-            "weight": 35,
+            "weight": 15,
             "block": "tfc:ore/poor_limonite/chert"
           },
           {
-            "weight": 40,
+            "weight": 25,
             "block": "tfc:ore/normal_limonite/chert"
           },
           {
-            "weight": 25,
+            "weight": 60,
             "block": "tfc:ore/rich_limonite/chert"
           }
         ]
@@ -129,15 +129,15 @@
         ],
         "with": [
           {
-            "weight": 35,
+            "weight": 15,
             "block": "tfc:ore/poor_limonite/chalk"
           },
           {
-            "weight": 40,
+            "weight": 25,
             "block": "tfc:ore/normal_limonite/chalk"
           },
           {
-            "weight": 25,
+            "weight": 60,
             "block": "tfc:ore/rich_limonite/chalk"
           }
         ]
@@ -148,15 +148,15 @@
         ],
         "with": [
           {
-            "weight": 35,
+            "weight": 15,
             "block": "tfc:ore/poor_limonite/tuff"
           },
           {
-            "weight": 40,
+            "weight": 25,
             "block": "tfc:ore/normal_limonite/tuff"
           },
           {
-            "weight": 25,
+            "weight": 60,
             "block": "tfc:ore/rich_limonite/tuff"
           }
         ]
