@@ -171,6 +171,8 @@ MINERAL_INDICATORS: Dict[str, str] = {
     'gypsum': 'quartzite',
     'halite': 'phyllite',
     'diamond': 'chalk',
+    'emerald': 'schist',
+    'deep_ruby': 'tuff',
 }
 
 POOR = 70, 25, 5  # = 1550
@@ -178,6 +180,7 @@ NORMAL = 35, 40, 25  # = 2400
 RICH = 15, 25, 60  # = 2550
 
 PUB_INDICATORS = MINERAL_INDICATORS.copy()
+PUB_INDICATORS['ruby'] = PUB_INDICATORS.pop('deep_ruby')
 #1.21 config starts here
 
 ORE_VEINS_NOHINTS: dict[str, Vein] = {
@@ -208,8 +211,8 @@ ORE_VEINS: dict[str, Vein] = {
     # 'normal_tetrahedrite': Vein.new('tetrahedrite', 40, 30, -30, 70, 0.5, ('metamorphic',), grade=NORMAL, indicator=25),
 
     # Native Gold - IE and II at all y levels, larger deeper
-    # OH: no change
-    # 'normal_native_gold': Vein.new('native_gold', 90, 15, 0, 70, 0.25, ('igneous_extrusive', 'igneous_intrusive'), grade=NORMAL, indicator=40),
+    # OH: deep inidicators
+    'normal_native_gold': Vein.new('native_gold', 90, 15, 0, 70, 0.25, ('igneous_extrusive', 'igneous_intrusive'), grade=NORMAL, indicator=40, deep_indicator=(1, 4)),
     # 'rich_native_gold': Vein.new('native_gold', 50, 40, -80, 20, 0.5, ('igneous_intrusive',), grade=RICH, indicator=0, deep_indicator=(1, 4)),
 
     # OH: No changes for troll veins!
@@ -239,10 +242,10 @@ ORE_VEINS: dict[str, Vein] = {
     # 'normal_sphalerite': Vein.new('sphalerite', 45, 40, -80, 20, 0.6, ('igneous_intrusive',), grade=RICH, indicator=0, deep_indicator=(1, 5)),
 
     # Iron - all occur on surface or in mountains via IE and Sed. IE has one, Sed has two, so the two are higher rarity, we decrease the rarity of the IE one to compensate. All are small veins, but the Sed ones are more common and larger.
-    # OH: decrease rarity of surface veins
-    'surface_hematite': Vein.new('hematite', 35, 20, 10, 90, 0.4, ('igneous_extrusive',), grade=NORMAL, indicator=24),
-    'surface_magnetite': Vein.new('magnetite', 70, 20, 10, 90, 0.4, ('sedimentary',), grade=NORMAL, indicator=24),
-    'surface_limonite': Vein.new('limonite', 70, 20, 10, 90, 0.4, ('sedimentary',), grade=NORMAL, indicator=24),
+    # OH: decrease rarity of surface veins and add deep indicators
+    'surface_hematite': Vein.new('hematite', 35, 20, 10, 90, 0.4, ('igneous_extrusive',), grade=NORMAL, indicator=24, deep_indicator=(1, 4)),
+    'surface_magnetite': Vein.new('magnetite', 70, 20, 10, 90, 0.4, ('sedimentary',), grade=NORMAL, indicator=24, deep_indicator=(1, 4)),
+    'surface_limonite': Vein.new('limonite', 70, 20, 10, 90, 0.4, ('sedimentary',), grade=NORMAL, indicator=24, deep_indicator=(1, 4)),
 
     # OH: TFC 1.21 added iron in mountains, but we change the grade to rich and density to 0.5.  These rarities are less common than OreHints 1.20, but more than vanilla 1.21
     'montane_hematite': Vein.new('hematite', 12, 20, 90, 250, 0.5, ('igneous_extrusive',), grade=RICH, indicator=24, montane=True),
@@ -250,25 +253,25 @@ ORE_VEINS: dict[str, Vein] = {
     'montane_limonite': Vein.new('limonite', 25, 20, 90, 250, 0.5, ('sedimentary',), grade=RICH, indicator=24, montane=True),
 
     # Nickel - only deep spawning II. Extra veins in gabbro, add deep indicators
-    # OH: no change, although that's a lot of nickel nuggets!
-    # 'normal_garnierite': Vein.new('garnierite', 25, 18, -80, 0, 0.3, ('igneous_intrusive',), grade=NORMAL),
-    #'gabbro_garnierite': Vein.new('garnierite', 20, 30, -80, 0, 0.6, ('gabbro',), grade=RICH, indicator=0, deep_indicator=(1, 7)),
+    # OH: deep indicators everywhere and less nuggets
+    'normal_garnierite': Vein.new('garnierite', 25, 18, -80, 0, 0.3, ('igneous_intrusive',), grade=NORMAL, deep_indicator=(1, 4)),
+    'gabbro_garnierite': Vein.new('garnierite', 20, 30, -80, 0, 0.6, ('gabbro',), grade=RICH, indicator=0, deep_indicator=(1, 4)),
 
     # Graphite - for steel, found in low MM. Along with Kao, which is high altitude sed (via clay deposits)
-    'graphite': Vein.new('graphite', 20, 20, -30, 60, 0.4, ('gneiss', 'marble', 'quartzite', 'schist')),
+    'graphite': Vein.new('graphite', 20, 20, -30, 60, 0.4, ('gneiss', 'marble', 'quartzite', 'schist'), deep_indicator=(1, 4)),
 
-    # Coal, spawns roughly based on IRL grade (lignite -> bituminous -> anthracite), big flat discs
-    # OH: increase rarity
-    'lignite': Vein.new('lignite', 210, 40, -20, -8, 0.85, ('sedimentary',), vein_type='disc', height=2, project='offset', simple_blocks=True),
-    'bituminous_coal': Vein.new('bituminous_coal', 250, 50, -35, -12, 0.9, ('sedimentary',), vein_type='disc', height=3, project='offset', simple_blocks=True),
+    # Coal, spawns roughly based on IRL grade (lignite -> bituminous -> anthracite), enormous flat discs
+    # OH: increase rarity a lot, coal is otherwise EVERYWHERE
+    'lignite': Vein.new('lignite', 250, 40, -20, -8, 0.85, ('sedimentary',), vein_type='disc', height=2, project='offset', simple_blocks=True),
+    'bituminous_coal': Vein.new('bituminous_coal', 300, 50, -35, -12, 0.9, ('sedimentary',), vein_type='disc', height=3, project='offset', simple_blocks=True),
 
     # Sulfur spawns near lava level in any low-level rock, common, but small veins, or in tuff near the surface
-    'sulfur': Vein.new('sulfur', 4, 18, -64, -45, 0.25, ('igneous_intrusive', 'metamorphic'), vein_type='disc', height=5, near_lava=True),
+    'sulfur': Vein.new('sulfur', 4, 18, -64, -45, 0.25, ('igneous_intrusive', 'metamorphic'), vein_type='disc', height=5, near_lava=True, deep_indicator=(1, 4)),
     'tuff_sulfur': Vein.new('sulfur', 2, 18, 40, 200, 0.45, ('tuff',), vein_type='disc', height=4),
 
     # Redstone: Cryolite is deep II, cinnabar is deep MM or Uplift Mountains, both are common enough within these rocks but rare to find
-    'cryolite': Vein.new('cryolite', 16, 18, -70, -10, 0.7, ('granite', 'diorite')),
-    'normal_cinnabar': Vein.new('cinnabar', 14, 18, -70, 10, 0.6, ('quartzite', 'phyllite', 'gneiss', 'schist')),
+    'cryolite': Vein.new('cryolite', 16, 18, -70, -10, 0.7, ('granite', 'diorite'), deep_indicator=(1, 4)),
+    'normal_cinnabar': Vein.new('cinnabar', 14, 18, -70, 10, 0.6, ('quartzite', 'phyllite', 'gneiss', 'schist'), deep_indicator=(1, 4)),
     'montane_cinnabar': Vein.new('cinnabar', 14, 14, 120, 280, 0.6, ('quartzite', 'phyllite', 'gneiss', 'schist'), montane=True),
 
     # Misc minerals - all spawning in discs, mostly in sedimentary rock. Rare, but all will spawn together
@@ -281,20 +284,22 @@ ORE_VEINS: dict[str, Vein] = {
     'halite': Vein.new('halite', 110, 35, -45, -12, 0.85, ('sedimentary',), vein_type='disc', height=4, project='offset', simple_blocks=True),
 
     # Gems - these are all fairly specific but since we don't have a gameplay need for gems they can be a bit niche
-    'lapis_lazuli': Vein.new('lapis_lazuli', 30, 30, -20, 80, 0.12, ('limestone', 'marble')),
+    # OH: add deep indicators as well
+    'lapis_lazuli': Vein.new('lapis_lazuli', 30, 30, -20, 80, 0.12, ('limestone', 'marble'), deep_indicator=(1, 4)),
 
-    'diamond': Vein.new('diamond', 30, 60, -64, 100, 0.15, ('gabbro',), vein_type='pipe', radius=5),
-    'emerald': Vein.new('emerald', 80, 60, -64, 100, 0.15, ('igneous_intrusive',), vein_type='pipe', radius=5),
+    'diamond': Vein.new('diamond', 30, 60, -64, 100, 0.15, ('gabbro',), vein_type='pipe', radius=5, deep_indicator=(1, 4)),
+    'emerald': Vein.new('emerald', 80, 60, -64, 100, 0.15, ('igneous_intrusive',), vein_type='pipe', radius=5, deep_indicator=(1, 4)),
 
     # OH: no change, no hint rocks for these
     # 'amethyst': Vein.new('amethyst', 25, 8, 40, 60, 0.2, ('sedimentary', 'metamorphic'), vein_type='disc', rivers_only=True, height=4),
     # 'opal': Vein.new('opal', 25, 8, 40, 60, 0.2, ('sedimentary', 'igneous_extrusive'), vein_type='disc', rivers_only=True, height=4),
-    # 'deep_ruby': Vein.new('ruby', 80, 22, -70, -10, 0.2, ('marble',)),
+    # OH: add deep indicators for these
+    'deep_ruby': Vein.new('ruby', 80, 22, -70, -10, 0.2, ('marble',), deep_indicator=(1, 4)),
 }
 
 SURPRISE_VEINS = {
-    'surprise_diamond': Vein.new('diamond', 240, 60, -64, 100, 0.4, ('gabbro',), vein_type='pipe', radius=5),
-    'surprise_emerald': Vein.new('emerald', 240, 60, -64, 100, 0.4, ('igneous_intrusive',), vein_type='pipe', radius=4),
+    'surprise_diamond': Vein.new('diamond', 240, 60, -64, 100, 0.4, ('gabbro',), vein_type='pipe', radius=5, deep_indicator=(1, 4)),
+    'surprise_emerald': Vein.new('emerald', 240, 60, -64, 100, 0.4, ('igneous_intrusive',), vein_type='pipe', radius=4, deep_indicator=(1, 4)),
 }
 
 # This is here because it's used all over, and it's easier to import with all constants

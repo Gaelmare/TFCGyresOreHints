@@ -90,7 +90,7 @@
       "rarity": 24,
       "depth": 35,
       "underground_rarity": 1,
-      "underground_count": 0,
+      "underground_count": 4,
       "blocks": [
         {
           "block": "tfc:ore/small_hematite"
